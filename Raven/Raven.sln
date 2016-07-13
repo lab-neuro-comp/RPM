@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Raven", "Raven\Raven.csproj", "{7BF79745-4D91-4379-A8A4-F8C038C9F4BB}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Infra", "Infra\Infra.fsproj", "{1CAC092E-3D43-4C8F-8E18-3C66A9F5A70F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7BF79745-4D91-4379-A8A4-F8C038C9F4BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BF79745-4D91-4379-A8A4-F8C038C9F4BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BF79745-4D91-4379-A8A4-F8C038C9F4BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BF79745-4D91-4379-A8A4-F8C038C9F4BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CAC092E-3D43-4C8F-8E18-3C66A9F5A70F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CAC092E-3D43-4C8F-8E18-3C66A9F5A70F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CAC092E-3D43-4C8F-8E18-3C66A9F5A70F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CAC092E-3D43-4C8F-8E18-3C66A9F5A70F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
