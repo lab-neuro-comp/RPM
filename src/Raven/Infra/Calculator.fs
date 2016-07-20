@@ -21,7 +21,7 @@ let getColumn(intervals: string[], age: int): int =
 // This logic is wrong!!! Must consider the upper and lower bounds
 let rec getPercentileLoop(table: string[][], score: int, row: int, column: int): int = 
     if row = table.Length
-        then 1
+        then 0
         else let value = int(table.ElementAt(row).ElementAt(column))
              if value = score
                 then int(table.ElementAt(row).ElementAt(0))
@@ -34,7 +34,9 @@ let getPercentile(table: string[][], score: int, column: int): int =
 /// the percentile the subject belongs to.
 let CalculateResult(table: string[][], score: int, age: int): int =
     let column = getColumn(table.ElementAt 0, age)
-    getPercentile(table, score, column)
+    if column >= 0
+        then getPercentile(table, score, column)
+        else 1
 
 
 
