@@ -28,10 +28,7 @@ C:\Users\cris\Documents\work\Lab\RPM\src\Raven\Raven\bin\Debug\Infra.pdb
 C:\Users\cris\Documents\work\Lab\RPM\src\Raven\Raven\bin\Debug\Infra.xml
 C:\Users\cris\Documents\work\Lab\RPM\src\Raven\Raven\bin\Debug\FSharp.Core.xml
 C:\Users\cris\Documents\work\Lab\RPM\src\Raven\Raven\obj\Debug\Raven.csprojResolveAssemblyReference.cache
-C:\Users\cris\Documents\work\Lab\RPM\src\Raven\Raven\obj\Debug\Raven.Form1.resources
-C:\Users\cris\Documents\work\Lab\RPM\src\Raven\Raven\obj\Debug\Raven.FormOps.resources
 C:\Users\cris\Documents\work\Lab\RPM\src\Raven\Raven\obj\Debug\Raven.Properties.Resources.resources
-C:\Users\cris\Documents\work\Lab\RPM\src\Raven\Raven\obj\Debug\Raven.FormResultado.resources
 C:\Users\cris\Documents\work\Lab\RPM\src\Raven\Raven\obj\Debug\Raven.csproj.GenerateResource.Cache
 C:\Users\cris\Documents\work\Lab\RPM\src\Raven\Raven\obj\Debug\Raven.csproj.App.config
 C:\Users\cris\Documents\work\Lab\RPM\src\Raven\Raven\bin\Debug\Microsoft.Threading.Tasks.dll
@@ -46,3 +43,6 @@ C:\Users\cris\Documents\work\Lab\RPM\src\Raven\Raven\bin\Debug\Microsoft.Threadi
 C:\Users\cris\Documents\work\Lab\RPM\src\Raven\Raven\bin\Debug\System.IO.xml
 C:\Users\cris\Documents\work\Lab\RPM\src\Raven\Raven\bin\Debug\System.Runtime.xml
 C:\Users\cris\Documents\work\Lab\RPM\src\Raven\Raven\bin\Debug\System.Threading.Tasks.xml
+C:\Users\cris\Documents\work\Lab\RPM\src\Raven\Raven\obj\Debug\Raven.View.FormIntro.resources
+C:\Users\cris\Documents\work\Lab\RPM\src\Raven\Raven\obj\Debug\Raven.View.FormOps.resources
+C:\Users\cris\Documents\work\Lab\RPM\src\Raven\Raven\obj\Debug\Raven.View.FormResultado.resources

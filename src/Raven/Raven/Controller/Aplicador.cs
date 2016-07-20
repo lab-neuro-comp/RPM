@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using Raven.Model;
 
-namespace Raven
+namespace Raven.Controller
 {
     public class Aplicador
     {

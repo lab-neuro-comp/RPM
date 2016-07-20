@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace Raven
+namespace Raven.View
 {
     public partial class FormResultado : Form
     {
@@ -23,7 +23,7 @@ namespace Raven
 
         private void btnVoltar_Click(object sender, EventArgs e)
         {
-            Form1 f1 = new Form1();
+            FormIntro f1 = new FormIntro();
             f1.Show();
             Close();
         }

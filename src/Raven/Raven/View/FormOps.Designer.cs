@@ -1,4 +1,4 @@
-﻿namespace Raven
+﻿namespace Raven.View
 {
     partial class FormOps
     {

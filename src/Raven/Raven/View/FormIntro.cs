@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Windows.Forms;
+using Raven.Model;
 
-namespace Raven
+namespace Raven.View
 {
-    public partial class Form1 : Form
+    public partial class FormIntro : Form
     {
         private Preparador DAL;
 
-        public Form1()
+        public FormIntro()
         {
             DAL = new Preparador();
             InitializeComponent();

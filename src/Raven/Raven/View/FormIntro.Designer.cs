@@ -1,6 +1,6 @@
-﻿namespace Raven
+﻿namespace Raven.View
 {
-    partial class Form1
+    partial class FormIntro
     {
         /// <summary>
         /// Required designer variable.

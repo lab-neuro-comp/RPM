@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using Infra;
 
-namespace Raven
+namespace Raven.Model
 {
     public class Preparador
     {
