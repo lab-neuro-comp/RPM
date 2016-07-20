@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\Aplicador.cs" />
+    <Compile Include="Model\CamadaAcessoDados.cs" />
     <Compile Include="Model\ExtratorCSV.cs" />
     <Compile Include="View\FormIntro.cs">
       <SubType>Form</SubType>
@@ -86,7 +87,7 @@
     <Compile Include="View\FormOps.Designer.cs">
       <DependentUpon>FormOps.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\Preparador.cs" />
+    <Compile Include="Controller\Preparador.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\FormResultado.cs">

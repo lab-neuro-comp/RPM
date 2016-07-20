@@ -2,48 +2,46 @@
 using System.Collections.Generic;
 using System.IO;
 using Infra;
+using Raven.Model;
 
-namespace Raven.Model
+namespace Raven.Controller
 {
     public class Preparador
     {
         public string[] Caminhos { get; private set; }
         public string[] Testes { get; private set; }
-        private string CaminhoAtual { get; set; }
         public string[] ImagensPrincipais { get; private set; }
         public int[] Opcoes { get; private set; }
         public int[] Respostas { get; private set; }
 
         public Preparador()
         {
-            //CaminhoAtual = @"C:\Users\cris\Documents\work\EEG\src\raven\Raven\Raven\";
-            //CaminhoAtual = @"..\..\";
-            CaminhoAtual = @".\assets\";
+            
         }
 
-        public void CarregarTeste()
+        public void CarregarTestes()
         {
-            var input = this.CaminhoAtual + "config\\versions.txt";
-            StreamReader file = new StreamReader(input);
+            string entrada = CamadaAcessoDados.CaminhoAtual + CamadaAcessoDados.CaminhoConfig;
+            string[] linhas = CamadaAcessoDados.CadaLinha(entrada);
             List<string> paths = new List<string>();
             List<string> tests = new List<string>();
 
-            for (string line = file.ReadLine(); line != null; line = file.ReadLine())
+            foreach (string linha in linhas)
             {
-                string[] data = line.Split(' ');
+                string[] data = linha.Split(' ');
                 paths.Add(data[0]);
                 tests.Add(data[1]);
             }
 
-            file.Close();
             this.Caminhos = paths.ToArray();
             this.Testes = tests.ToArray();
         }
 
+        // TODO Adicionar esta parte para a camada de acesso de dados
         public void CarregarOpcoes(string teste)
         {
-            string config = CaminhoAtual + @"config\" + teste + ".txt";
-            string caminhoDados = CaminhoAtual + teste + @"\";
+            string config = CamadaAcessoDados.CaminhoAtual + @"config\" + teste + ".txt";
+            string caminhoDados = CamadaAcessoDados.CaminhoAtual + teste + @"\";
             List<string> imgs = new List<string>();
             List<int> ops = new List<int>();
             List<int> ans = new List<int>();
@@ -62,15 +60,17 @@ namespace Raven.Model
             Respostas = ans.ToArray();
         }
 
+        // TODO Adicionar esta parte para o módulo de infraestrutura
         internal int CalcularResultado(string nomeTeste, 
                                        int noRespostasCorretas, 
                                        int idade)
         {
-            string csvFileName = CaminhoAtual + nomeTeste + ".csv";
+            string csvFileName = CamadaAcessoDados.CaminhoAtual + nomeTeste + ".csv";
             ExtratorCSV extrator = new ExtratorCSV(csvFileName);
             return extrator.Relacionar(idade, noRespostasCorretas);
         }
 
+        // TODO Adicionar esta parte para a camada de acesso de dados
         public string[] CarregarImagens(string test, string img, int noImgs)
         {
             string[] imgs = new string[noImgs+1];
@@ -81,7 +81,7 @@ namespace Raven.Model
             }
             else for (int i = 0; i <= noImgs; ++i)
             {
-                imgs[i] = CaminhoAtual + test + @"\" + img + "." + i + ".png";
+                imgs[i] = CamadaAcessoDados.CaminhoAtual + test + @"\" + img + "." + i + ".png";
             }
 
             return imgs;

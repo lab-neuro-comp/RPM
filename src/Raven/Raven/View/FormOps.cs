@@ -1,9 +1,9 @@
-﻿using Raven.Controller;
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Raven.Controller;
 
 namespace Raven.View
 {
@@ -30,21 +30,16 @@ namespace Raven.View
             Pics[7] = picOp8;
         }
 
-        public FormOps(string nomeTeste) : this()
+        public FormOps(Aplicador app) : this()
         {
-            this.App = new Aplicador(nomeTeste);
-        }
-
-        public FormOps(string nomeTeste, int idade) : this()
-        {
-            this.App = new Aplicador(nomeTeste, idade);
+            this.App = app;
         }
 
         public async void Test()
         {
             Stopwatch clock = new Stopwatch();
 
-            this.App.PrepararTeste();
+            App.PrepararTeste();
             for (NoRodada = 0; NoRodada < this.App.Imagens.Length; NoRodada++)
             {
                 DefinirTela(this.App.CarregarImagens(NoRodada));
@@ -56,8 +51,9 @@ namespace Raven.View
                 clock.Reset();
             }
 
+            // Termina o teste
             FormResultado form = new FormResultado(App.CalcularResultado(), 
-                                                App.NoRespostasCorretas);
+                                                   App.NoRespostasCorretas);
             Console.WriteLine("Sai do loop");
             form.Show();
             Close();
@@ -162,6 +158,9 @@ namespace Raven.View
 
         }
 
+        #endregion
+
+        #region Pictures callbacks
         private void picOp1_Click(object sender, EventArgs e)
         {
             Respondeu = true;

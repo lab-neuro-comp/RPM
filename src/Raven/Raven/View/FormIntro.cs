@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Windows.Forms;
-using Raven.Model;
+using Raven.Controller;
 
 namespace Raven.View
 {
     public partial class FormIntro : Form
     {
-        private Preparador DAL;
+        private Preparador Cook { get; set; }
 
         public FormIntro()
         {
-            DAL = new Preparador();
             InitializeComponent();
             WindowState = FormWindowState.Maximized;
             PopulateItems();
@@ -18,8 +17,9 @@ namespace Raven.View
 
         private void PopulateItems()
         {
-            DAL.CarregarTeste();
-            foreach(string item in this.DAL.Testes)
+            Cook = new Preparador();
+            Cook.CarregarTestes();
+            foreach(string item in Cook.Testes)
                 comboOps.Items.Add(item);
         }
 
@@ -36,7 +36,8 @@ namespace Raven.View
                 return;
             }
                 
-            FormOps f2 = new FormOps(DAL.Caminhos[comboOps.SelectedIndex], idade);
+            FormOps f2 = new FormOps(new Aplicador(Cook.Caminhos[comboOps.SelectedIndex], 
+                                                   int.Parse(textIdade.Text)));
             f2.Show();
             f2.Test();
             this.Hide();
