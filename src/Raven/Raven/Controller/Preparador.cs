@@ -69,23 +69,5 @@ namespace Raven.Controller
             ExtratorCSV extrator = new ExtratorCSV(csvFileName);
             return extrator.Relacionar(idade, noRespostasCorretas);
         }
-
-        // TODO Adicionar esta parte para a camada de acesso de dados
-        public string[] CarregarImagens(string test, string img, int noImgs)
-        {
-            string[] imgs = new string[noImgs+1];
-
-            if (img.Length <= 2)
-            {
-                return null;
-            }
-            else for (int i = 0; i <= noImgs; ++i)
-            {
-                imgs[i] = CamadaAcessoDados.CaminhoAtual + test + @"\" + img + "." + i + ".png";
-            }
-
-            return imgs;
-        }
-
     }
 }

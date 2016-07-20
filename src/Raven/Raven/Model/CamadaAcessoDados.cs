@@ -10,6 +10,7 @@ namespace Raven.Model
     {
         public static string CaminhoAtual = @".\assets\";
         public static string CaminhoConfig = @"config\versions.txt";
+        public static string CaminhoDados = @"config\";
 
         public static string[] CadaLinha(string entrada)
         {
@@ -24,6 +25,32 @@ namespace Raven.Model
             return caixa.ToArray<string>();
         }
 
+        public static string GerarParametrosPeloTeste(string teste)
+        {
+            return CaminhoAtual + CaminhoDados + teste + ".txt";
+        }
 
+        public static string GerarPadraoPeloTeste(string teste)
+        {
+            return CaminhoAtual + CaminhoDados + teste + ".csv";
+        }
+
+
+        public static string[] CarregarImagens(string test, string img, int noImgs)
+        {
+            string[] imgs = new string[noImgs + 1];
+
+            if (img.Length <= 2)
+            {
+                return null;
+            }
+            else
+                for (int i = 0; i <= noImgs; ++i)
+                {
+                    imgs[i] = CamadaAcessoDados.CaminhoAtual + test + @"\" + img + "." + i + ".png";
+                }
+
+            return imgs;
+        }
     }
 }

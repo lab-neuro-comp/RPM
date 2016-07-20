@@ -42,7 +42,7 @@ namespace Raven.View
             App.PrepararTeste();
             for (NoRodada = 0; NoRodada < this.App.Imagens.Length; NoRodada++)
             {
-                DefinirTela(this.App.CarregarImagens(NoRodada));
+                DefinirTela(App.CarregarImagens(NoRodada));
                 clock.Start();
                 await RecebeuResposta();
                 clock.Stop();
