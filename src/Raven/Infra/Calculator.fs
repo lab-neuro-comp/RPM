@@ -3,24 +3,24 @@
 open System
 open System.Linq
 
-let getRaw(interval: string): string[] =
-    interval.Split ' '
-
+/// Gets the column the age belongs to
 // this logic is wrong!!!
-let rec getColumnLoop(intervals: string[], index: int, limit: int, age: int): int =
-    let raw = getRaw(intervals.ElementAt index)
-    let lower = int(raw.ElementAt 0)
-    let upper = int(raw.ElementAt 1)
-    if index = limit
+let rec getColumnLoop(intervals: string[], index: int, age: int): int =
+    if index = intervals.Length
         then -1
-        else if age >= lower && age < upper
-            then index
-            else getColumnLoop(intervals, index+1, limit, age)
+        else let raw = intervals.ElementAt(index).Split ' '
+             let lower = int(raw.ElementAt 0)
+             let upper = int(raw.ElementAt 1)
+             if age >= lower && age < upper
+                 then index
+                 else getColumnLoop(intervals, index+1, age)
 
 let getColumn(intervals: string[], age: int): int =
-    getColumnLoop(intervals, 1, intervals.Length+1, age)
+    getColumnLoop(intervals, 1, age)
 
+/// Takes a table and the number of correct answers and turn them into
+/// the percentile the subject belongs to
 let CalculateResult(table: string[][], score: int): int =
-    score
+    getColumn(table.ElementAt 0, score)
 
 

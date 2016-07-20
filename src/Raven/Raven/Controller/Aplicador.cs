@@ -67,7 +67,7 @@ namespace Raven.Controller
             // calculando resultado
             // TODO Calcular resultado
             int percentil = Infra.Calculator.CalculateResult(tabela, NoRespostasCorretas);
-            return $"{percentil} {NoRespostasCorretas} {percentil}";
+            return $"{percentil} {NoRespostasCorretas}";
             //return percentil.ToString();
         }
     }
