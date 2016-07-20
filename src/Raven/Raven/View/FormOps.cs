@@ -39,6 +39,7 @@ namespace Raven.View
         {
             Stopwatch clock = new Stopwatch();
 
+            // Realizando o teste
             App.PrepararTeste();
             for (NoRodada = 0; NoRodada < this.App.Imagens.Length; NoRodada++)
             {
@@ -51,10 +52,8 @@ namespace Raven.View
                 clock.Reset();
             }
 
-            // Termina o teste
-            FormResultado form = new FormResultado(App.CalcularResultado(), 
-                                                   App.NoRespostasCorretas);
-            Console.WriteLine("Sai do loop");
+            // Terminando o teste
+            FormResultado form = new FormResultado(App.CalcularResultado());
             form.Show();
             Close();
         }

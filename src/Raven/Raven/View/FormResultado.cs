@@ -11,10 +11,9 @@ namespace Raven.View
             WindowState = FormWindowState.Maximized;
         }
 
-        public FormResultado(string resultado, int noRespostasCorretas) : this()
+        public FormResultado(string resultado) : this()
         {
-            lblResultado.Text = resultado;
-            lblNoRespostasCorretas.Text = noRespostasCorretas.ToString();
+            lblLevel.Text = resultado;
         }
 
         private void btnSair_Click(object sender, EventArgs e)

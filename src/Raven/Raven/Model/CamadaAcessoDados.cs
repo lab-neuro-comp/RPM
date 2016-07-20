@@ -47,7 +47,7 @@ namespace Raven.Model
             else
                 for (int i = 0; i <= noImgs; ++i)
                 {
-                    imgs[i] = CamadaAcessoDados.CaminhoAtual + test + @"\" + img + "." + i + ".png";
+                    imgs[i] = CaminhoAtual + test + @"\" + img + "." + i + ".png";
                 }
 
             return imgs;

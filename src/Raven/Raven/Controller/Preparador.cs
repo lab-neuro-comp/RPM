@@ -59,15 +59,5 @@ namespace Raven.Controller
             Opcoes = ops.ToArray();
             Respostas = ans.ToArray();
         }
-
-        // TODO Adicionar esta parte para o módulo de infraestrutura
-        internal int CalcularResultado(string nomeTeste, 
-                                       int noRespostasCorretas, 
-                                       int idade)
-        {
-            string csvFileName = CamadaAcessoDados.CaminhoAtual + nomeTeste + ".csv";
-            ExtratorCSV extrator = new ExtratorCSV(csvFileName);
-            return extrator.Relacionar(idade, noRespostasCorretas);
-        }
     }
 }

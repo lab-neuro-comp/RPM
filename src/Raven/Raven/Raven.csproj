@@ -74,7 +74,6 @@
   <ItemGroup>
     <Compile Include="Controller\Aplicador.cs" />
     <Compile Include="Model\CamadaAcessoDados.cs" />
-    <Compile Include="Model\ExtratorCSV.cs" />
     <Compile Include="View\FormIntro.cs">
       <SubType>Form</SubType>
     </Compile>

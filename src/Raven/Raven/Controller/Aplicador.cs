@@ -23,9 +23,7 @@ namespace Raven.Controller
 
         public string[] CarregarImagens(int rodada)
         {
-            return CamadaAcessoDados.CarregarImagens(NomeTeste, 
-                                                     Imagens[rodada], 
-                                                     NoOpcoes[rodada]);
+            return CamadaAcessoDados.CarregarImagens(NomeTeste, Imagens[rodada], NoOpcoes[rodada]);
         }
 
         public void PrepararTeste()
@@ -40,6 +38,9 @@ namespace Raven.Controller
             Imagens = Infra.ParamExtractor.GetImages(dadosPuros);
             NoOpcoes = Infra.ParamExtractor.GetNoOptions(dadosPuros);
             OpcoesCorretas = Infra.ParamExtractor.GetNoOptions(dadosPuros);
+
+            // Checando se os dados carregados estão corretos
+            
         }
 
         public void OuvirResposta(int rodada, int resposta)
@@ -57,8 +58,18 @@ namespace Raven.Controller
 
         public string CalcularResultado()
         {
-            //return DAL.CalcularResultado(NomeTeste, NoRespostasCorretas, Idade).ToString();
-            return null;
+            // preparando dados para cálculo
+            string arquivoPadrao = CamadaAcessoDados.GerarPadraoPeloTeste(NomeTeste);
+            string[] dadosPuros = CamadaAcessoDados.CadaLinha(arquivoPadrao);
+            string[][] tabela = Infra.ParamExtractor.GenerateTableFromCsv(dadosPuros);
+            int percentil = Infra.Calculator.CalculatePercentile(Imagens.Length, NoRespostasCorretas);
+
+            // calculando resultado
+            // TODO Calcular resultado
+            Console.WriteLine($"Percentil: {percentil}");
+            return percentil.ToString();
+            //return Infra.Calculator.CalculateResult(tabela, Idade, percentil).ToString();
+            //return percentil.ToString();
         }
     }
 }
