@@ -8,6 +8,7 @@ namespace Raven.View
         public FormResultado()
         {
             InitializeComponent();
+            WindowState = FormWindowState.Maximized;
         }
 
         public FormResultado(string resultado, int noRespostasCorretas) : this()
@@ -27,5 +28,6 @@ namespace Raven.View
             f1.Show();
             Close();
         }
+        
     }
 }

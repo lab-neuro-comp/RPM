@@ -37,42 +37,53 @@
             this.lblNoRespostasCorretas = new System.Windows.Forms.Label();
             this.lblLevel = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblTitulo
             // 
             this.lblTitulo.AutoSize = true;
-            this.lblTitulo.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.Location = new System.Drawing.Point(31, 21);
+            this.tableLayoutPanel1.SetColumnSpan(this.lblTitulo, 2);
+            this.lblTitulo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblTitulo.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.Location = new System.Drawing.Point(3, 0);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(86, 18);
+            this.lblTitulo.Size = new System.Drawing.Size(588, 117);
             this.lblTitulo.TabIndex = 0;
             this.lblTitulo.Text = "Resultados";
+            this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblChaveResultado
             // 
+            this.lblChaveResultado.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblChaveResultado.AutoSize = true;
-            this.lblChaveResultado.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblChaveResultado.Location = new System.Drawing.Point(33, 63);
+            this.lblChaveResultado.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblChaveResultado.Location = new System.Drawing.Point(3, 139);
             this.lblChaveResultado.Name = "lblChaveResultado";
-            this.lblChaveResultado.Size = new System.Drawing.Size(51, 14);
+            this.lblChaveResultado.Size = new System.Drawing.Size(291, 18);
             this.lblChaveResultado.TabIndex = 1;
             this.lblChaveResultado.Text = "Percentil:";
+            this.lblChaveResultado.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblResultado
             // 
+            this.lblResultado.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblResultado.AutoSize = true;
-            this.lblResultado.Location = new System.Drawing.Point(155, 63);
+            this.lblResultado.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblResultado.Location = new System.Drawing.Point(300, 265);
             this.lblResultado.Name = "lblResultado";
-            this.lblResultado.Size = new System.Drawing.Size(0, 13);
+            this.lblResultado.Size = new System.Drawing.Size(291, 18);
             this.lblResultado.TabIndex = 2;
+            this.lblResultado.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btnSair
             // 
-            this.btnSair.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSair.Location = new System.Drawing.Point(28, 143);
+            this.btnSair.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnSair.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSair.Location = new System.Drawing.Point(76, 353);
             this.btnSair.Name = "btnSair";
-            this.btnSair.Size = new System.Drawing.Size(89, 25);
+            this.btnSair.Size = new System.Drawing.Size(145, 25);
             this.btnSair.TabIndex = 3;
             this.btnSair.Text = "Sair";
             this.btnSair.UseVisualStyleBackColor = true;
@@ -80,10 +91,11 @@
             // 
             // btnVoltar
             // 
-            this.btnVoltar.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVoltar.Location = new System.Drawing.Point(158, 143);
+            this.btnVoltar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnVoltar.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVoltar.Location = new System.Drawing.Point(366, 353);
             this.btnVoltar.Name = "btnVoltar";
-            this.btnVoltar.Size = new System.Drawing.Size(89, 25);
+            this.btnVoltar.Size = new System.Drawing.Size(158, 25);
             this.btnVoltar.TabIndex = 4;
             this.btnVoltar.Text = "Recomeçar";
             this.btnVoltar.UseVisualStyleBackColor = true;
@@ -91,60 +103,89 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(33, 86);
+            this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(3, 202);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(107, 14);
+            this.label1.Size = new System.Drawing.Size(291, 18);
             this.label1.TabIndex = 5;
             this.label1.Text = "Respostas Corretas:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblNoRespostasCorretas
             // 
+            this.lblNoRespostasCorretas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblNoRespostasCorretas.AutoSize = true;
-            this.lblNoRespostasCorretas.Location = new System.Drawing.Point(155, 86);
+            this.lblNoRespostasCorretas.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNoRespostasCorretas.Location = new System.Drawing.Point(300, 202);
             this.lblNoRespostasCorretas.Name = "lblNoRespostasCorretas";
-            this.lblNoRespostasCorretas.Size = new System.Drawing.Size(0, 13);
+            this.lblNoRespostasCorretas.Size = new System.Drawing.Size(291, 18);
             this.lblNoRespostasCorretas.TabIndex = 6;
+            this.lblNoRespostasCorretas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblLevel
             // 
+            this.lblLevel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblLevel.AutoSize = true;
-            this.lblLevel.Location = new System.Drawing.Point(155, 112);
+            this.lblLevel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLevel.Location = new System.Drawing.Point(300, 139);
             this.lblLevel.Name = "lblLevel";
-            this.lblLevel.Size = new System.Drawing.Size(0, 13);
+            this.lblLevel.Size = new System.Drawing.Size(291, 18);
             this.lblLevel.TabIndex = 8;
+            this.lblLevel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblLevel.Visible = false;
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(33, 112);
+            this.label3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(3, 265);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 14);
+            this.label3.Size = new System.Drawing.Size(291, 18);
             this.label3.TabIndex = 7;
             this.label3.Text = "Resultado:";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.label3.Visible = false;
             // 
-            // Resultado
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.lblLevel, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btnSair, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.lblNoRespostasCorretas, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.lblResultado, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.lblChaveResultado, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.lblTitulo, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.btnVoltar, 1, 4);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 5;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 27.5F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 27.5F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(594, 426);
+            this.tableLayoutPanel1.TabIndex = 9;
+            // 
+            // FormResultado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 191);
-            this.Controls.Add(this.lblLevel);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.lblNoRespostasCorretas);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnVoltar);
-            this.Controls.Add(this.btnSair);
-            this.Controls.Add(this.lblResultado);
-            this.Controls.Add(this.lblChaveResultado);
-            this.Controls.Add(this.lblTitulo);
-            this.Name = "Resultado";
+            this.ClientSize = new System.Drawing.Size(594, 426);
+            this.Controls.Add(this.tableLayoutPanel1);
+            this.Name = "FormResultado";
             this.Text = "Resultado";
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -159,5 +200,6 @@
         private System.Windows.Forms.Label lblNoRespostasCorretas;
         private System.Windows.Forms.Label lblLevel;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }
