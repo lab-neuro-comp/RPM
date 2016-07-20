@@ -5,15 +5,14 @@ namespace Raven.View
 {
     public partial class FormResultado : Form
     {
-        public FormResultado()
+        public FormResultado(string resultado)
         {
-            InitializeComponent();
+            /* Não se esqueça de que o os labels de baixo estão invisíveis! */
+            InitializeComponent(); 
             WindowState = FormWindowState.Maximized;
-        }
-
-        public FormResultado(string resultado) : this()
-        {
-            lblLevel.Text = resultado;
+            var stuff = resultado.Split(' ');
+            lblLevel.Text = stuff[0];
+            lblNoRespostasCorretas.Text = stuff[1];
         }
 
         private void btnSair_Click(object sender, EventArgs e)

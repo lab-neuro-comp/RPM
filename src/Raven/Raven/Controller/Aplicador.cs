@@ -41,7 +41,7 @@ namespace Raven.Controller
             OpcoesCorretas = Infra.ParamExtractor.GetCorrectOptions(dadosPuros);
 
             // Checando se os dados carregados estão corretos
-            Console.WriteLine(OpcoesCorretas.Aggregate("", (box, it) => $"{box} {it}"));
+            //Console.WriteLine(OpcoesCorretas.Aggregate("", (box, it) => $"{box} {it}"));
         }
 
         public void OuvirResposta(int rodada, int resposta)
@@ -67,7 +67,7 @@ namespace Raven.Controller
             // calculando resultado
             // TODO Calcular resultado
             int percentil = Infra.Calculator.CalculateResult(tabela, NoRespostasCorretas);
-            return $"Resultados: {percentil}";
+            return $"{percentil} {NoRespostasCorretas} {percentil}";
             //return percentil.ToString();
         }
     }
