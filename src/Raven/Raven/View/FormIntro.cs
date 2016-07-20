@@ -12,6 +12,7 @@ namespace Raven.View
         {
             DAL = new Preparador();
             InitializeComponent();
+            WindowState = FormWindowState.Maximized;
             PopulateItems();
         }
 
