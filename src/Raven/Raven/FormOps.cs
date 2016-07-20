@@ -114,7 +114,7 @@ namespace Raven
 
             while (!Respondeu)
             {
-                await Task.Delay(10);
+                await TaskEx.Delay(10);
             }
 
             return "Respondido";

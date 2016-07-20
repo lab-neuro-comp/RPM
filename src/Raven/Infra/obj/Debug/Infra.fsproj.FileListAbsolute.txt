@@ -5,3 +5,10 @@ C:\Users\cris\Documents\work\EEG\src\raven\Raven\Infra\bin\Debug\FSharp.Core.dll
 C:\Users\cris\Documents\work\EEG\src\raven\Raven\Infra\bin\Debug\FSharp.Core.xml
 C:\Users\cris\Documents\work\EEG\src\raven\Raven\Infra\obj\Debug\Infra.dll
 C:\Users\cris\Documents\work\EEG\src\raven\Raven\Infra\obj\Debug\Infra.pdb
+C:\Users\cris\Documents\work\Lab\RPM\src\Raven\Infra\bin\Debug\Infra.XML
+C:\Users\cris\Documents\work\Lab\RPM\src\Raven\Infra\bin\Debug\Infra.dll
+C:\Users\cris\Documents\work\Lab\RPM\src\Raven\Infra\bin\Debug\Infra.pdb
+C:\Users\cris\Documents\work\Lab\RPM\src\Raven\Infra\bin\Debug\FSharp.Core.dll
+C:\Users\cris\Documents\work\Lab\RPM\src\Raven\Infra\bin\Debug\FSharp.Core.xml
+C:\Users\cris\Documents\work\Lab\RPM\src\Raven\Infra\obj\Debug\Infra.dll
+C:\Users\cris\Documents\work\Lab\RPM\src\Raven\Infra\obj\Debug\Infra.pdb
