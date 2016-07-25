@@ -63,9 +63,6 @@ namespace Raven.View
             int noOps = AjustarOpcoes(imagens.Length-1);
 
             picMain.Image = Image.FromFile(imagens[0]);
-            Console.WriteLine($"No ops: {noOps}");
-            Console.WriteLine("...");
-
             for (int i = 1; i <= noOps; ++i)
             {
                 Pics[i - 1].Image = Image.FromFile(imagens[i]);
