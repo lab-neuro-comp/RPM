@@ -24,7 +24,7 @@ let getPercentile(table: string[][], score: int, column: int): int =
             then 1
             else let upper = int(table.ElementAt(row).ElementAt(column))
                  let lower = int(table.ElementAt(row+1).ElementAt(column))
-                 if score <= upper && score >= lower
+                 if score <= upper && score > lower
                     then int(table.ElementAt(row).ElementAt(0))
                     else getPercentileLoop(table, score, row+1, column)
     getPercentileLoop(table, score, 1, column)
