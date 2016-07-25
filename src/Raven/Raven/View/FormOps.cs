@@ -17,9 +17,9 @@ namespace Raven.View
         public FormOps()
         {
             InitializeComponent();
-            Pics = new PictureBox[8];
+            WindowState = FormWindowState.Maximized;
             this.KeyUp += new KeyEventHandler(this.FormOps_KeyUp);
-
+            Pics = new PictureBox[8];
             Pics[0] = picOp1;
             Pics[1] = picOp2;
             Pics[2] = picOp3;
@@ -60,10 +60,13 @@ namespace Raven.View
 
         private void DefinirTela(string[] imagens)
         {
-            int no_ops = AjustarOpcoes(imagens.Length-1);
+            int noOps = AjustarOpcoes(imagens.Length-1);
 
             picMain.Image = Image.FromFile(imagens[0]);
-            for (int i = 1; i <= no_ops; ++i)
+            Console.WriteLine($"No ops: {noOps}");
+            Console.WriteLine("...");
+
+            for (int i = 1; i <= noOps; ++i)
             {
                 Pics[i - 1].Image = Image.FromFile(imagens[i]);
             }
@@ -73,27 +76,21 @@ namespace Raven.View
 
         private int AjustarOpcoes(int length)
         {
-            int width = 0;
-            int left = 0;
             bool enabled = true;
 
             switch (length)
             {
                 case 6:
-                    width = 463;
-                    left = 65;
+                    DefinirNoColunas(length);
                     enabled = false;
                     break;
 
                 case 8:
-                    width = 600;
-                    left = 131;
+                    DefinirNoColunas(length);
                     enabled = true;
                     break;
             }
 
-            Width = width;
-            picMain.Location = new Point(left, 12);
             picOp7.Enabled = picOp7.Visible = enabled;
             picOp8.Enabled = picOp8.Visible = enabled;
             return length;
