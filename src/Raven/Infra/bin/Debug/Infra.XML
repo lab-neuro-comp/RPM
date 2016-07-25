@@ -2,5 +2,21 @@
 <doc>
 <assembly><name>Infra</name></assembly>
 <members>
+<member name="M:Infra.Calculator.CalculateResult(System.String[][],System.Int32,System.Int32)">
+<summary>
+ Takes a table and the number of correct answers and turn them into
+ the percentile the subject belongs to.
+</summary>
+</member>
+<member name="M:Infra.Calculator.getPercentileLoop(System.String[][],System.Int32,System.Int32,System.Int32)">
+<summary>
+ Gets the percentile based on choosen column and on the score
+</summary>
+</member>
+<member name="M:Infra.Calculator.getColumnLoop(System.String[],System.Int32,System.Int32)">
+<summary>
+ Gets the column the age belongs to.
+</summary>
+</member>
 </members>
 </doc>

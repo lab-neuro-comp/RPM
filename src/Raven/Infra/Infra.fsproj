@@ -47,7 +47,8 @@
     <Compile Include="AssemblyInfo.fs" />
     <Compile Include="Preparer.fs" />
     <None Include="Script.fsx" />
-    <Compile Include="CSVExtractor.fs" />
+    <Compile Include="ParamExtractor.fs" />
+    <Compile Include="Calculator.fs" />
   </ItemGroup>
   <PropertyGroup>
     <MinimumVisualStudioVersion Condition="'$(MinimumVisualStudioVersion)' == ''">11</MinimumVisualStudioVersion>
