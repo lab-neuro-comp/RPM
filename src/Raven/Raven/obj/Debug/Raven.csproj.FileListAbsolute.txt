@@ -46,3 +46,4 @@ C:\Users\cris\Documents\work\Lab\RPM\src\Raven\Raven\bin\Debug\Microsoft.Threadi
 C:\Users\cris\Documents\work\Lab\RPM\src\Raven\Raven\bin\Debug\System.IO.xml
 C:\Users\cris\Documents\work\Lab\RPM\src\Raven\Raven\bin\Debug\System.Runtime.xml
 C:\Users\cris\Documents\work\Lab\RPM\src\Raven\Raven\bin\Debug\System.Threading.Tasks.xml
+C:\Users\LAB\Documents\Projects\RPM\src\Raven\Raven\obj\Debug\Raven.pdb
