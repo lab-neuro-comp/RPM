@@ -53,7 +53,7 @@ namespace Raven.View
             }
 
             // Terminando o teste
-            FormResultado form = new FormResultado(App.CalcularResultado());
+            FormResultado form = new FormResultado(App);
             form.Show();
             Close();
         }
