@@ -78,8 +78,10 @@ namespace Raven.Controller
         {
             List<string> linhas = new List<string>();
 
-            // TODO Salvar resultado do sujeito: cronômetro, percentil e respostas
+            // TODO Formatar saída a partir da especificação
             linhas.Add(this.CalcularResultado());
+            linhas.Add(Respostas.Aggregate("Respostas", (box, it) => $"{box}\t{it}"));
+            linhas.Add(Tempos.Aggregate("Tempos", (box, it) => $"{box}\t{it}"));
 
             CamadaAcessoDados.Salvar(CamadaAcessoDados.GerarResultado(NomeSujeito),
                                      linhas.ToArray<string>());
