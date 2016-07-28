@@ -12,11 +12,8 @@ namespace Raven.View
         {
             InitializeComponent();
             WindowState = FormWindowState.Maximized;
-            PopulateItems();
-        }
-
-        private void PopulateItems()
-        {
+         
+            // Adicionando opções de testes   
             Cook = new Preparador();
             Cook.CarregarTestes();
             foreach(string item in Cook.Testes)
@@ -25,24 +22,27 @@ namespace Raven.View
 
         private void button1_Click(object sender, EventArgs e)
         {
-            int idade;
             string nome;
+            string teste;
+            int idade;
 
             try
             {
-                idade = int.Parse(textIdade.Text);
                 nome = textNome.Text;
+                idade = int.Parse(textIdade.Text);
+                teste = Cook.Caminhos[comboOps.SelectedIndex];
+                
+                if (nome.Length < 1)
+                    throw new Exception();
             }
             catch (Exception any)
             {
+                MessageBox.Show("Preencha todos os campos", "Aviso!");
                 return;
             }
-                
-            FormOps f2 = new FormOps(new Aplicador(nome,
-                                                   Cook.Caminhos[comboOps.SelectedIndex], 
-                                                   int.Parse(textIdade.Text)));
-            f2.Show();
-            f2.Test();
+
+            FormPre form = new FormPre(new Aplicador(nome, teste, idade));
+            form.Show();
             this.Hide();
         }
     }
