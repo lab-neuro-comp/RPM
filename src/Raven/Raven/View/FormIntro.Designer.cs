@@ -60,7 +60,7 @@
             this.button1.Location = new System.Drawing.Point(150, 235);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(141, 27);
-            this.button1.TabIndex = 1;
+            this.button1.TabIndex = 4;
             this.button1.Text = "Começar o teste";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -85,7 +85,7 @@
             this.comboOps.Location = new System.Drawing.Point(150, 149);
             this.comboOps.Name = "comboOps";
             this.comboOps.Size = new System.Drawing.Size(141, 28);
-            this.comboOps.TabIndex = 3;
+            this.comboOps.TabIndex = 2;
             // 
             // label3
             // 
@@ -106,7 +106,7 @@
             this.textIdade.Location = new System.Drawing.Point(150, 178);
             this.textIdade.Name = "textIdade";
             this.textIdade.Size = new System.Drawing.Size(141, 26);
-            this.textIdade.TabIndex = 5;
+            this.textIdade.TabIndex = 3;
             // 
             // tableLayoutPanel1
             // 
@@ -153,7 +153,7 @@
             this.textNome.Location = new System.Drawing.Point(150, 120);
             this.textNome.Name = "textNome";
             this.textNome.Size = new System.Drawing.Size(141, 26);
-            this.textNome.TabIndex = 7;
+            this.textNome.TabIndex = 1;
             // 
             // FormIntro
             // 
