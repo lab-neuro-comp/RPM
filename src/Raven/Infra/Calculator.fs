@@ -5,7 +5,7 @@ open System
 open System.Linq
 
 /// Gets the column the age belongs to.
-let getColumn(intervals: string[], age: int): int =
+let getColumn (intervals : string[]) (age : int) =
     let rec getColumnLoop index =
         if index = intervals.Length
             then -1
@@ -18,7 +18,7 @@ let getColumn(intervals: string[], age: int): int =
     getColumnLoop 1
 
 /// Gets the percentile based on choosen column and on the score
-let getPercentile(table: string[][], score: int, column: int): int =
+let getPercentile (table : string[][]) (score : int) (column : int) =
     let rec getPercentileLoop row =
         if row >= table.Length - 1
             then 1
@@ -31,8 +31,8 @@ let getPercentile(table: string[][], score: int, column: int): int =
 
 /// Takes a table and the number of correct answers and turn them into
 /// the percentile the subject belongs to.
-let CalculateResult(table: string[][], score: int, age: int): int =
-    let column = getColumn(table.ElementAt 0, age)
+let CalculateResult (table : string[][]) (score : int) (age : int) : int =
+    let column = getColumn (table.ElementAt 0) age
     if column >= 0
-        then getPercentile(table, score, column)
+        then getPercentile table score column
         else 1
