@@ -50,6 +50,12 @@
   <ItemGroup>
     <Compile Include="Controller\Aplicador.cs" />
     <Compile Include="Model\CamadaAcessoDados.cs" />
+    <Compile Include="View\FormOutro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormOutro.Designer.cs">
+      <DependentUpon>FormOutro.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\FormIntro.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +99,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\FormOutro.resx">
+      <DependentUpon>FormOutro.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\FormPre.resx">
       <DependentUpon>FormPre.cs</DependentUpon>
     </EmbeddedResource>
