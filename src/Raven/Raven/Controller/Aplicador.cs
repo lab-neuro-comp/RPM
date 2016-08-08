@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Raven.Model;
 using System.Linq;
 using Infra;
+using System.Globalization;
 
 namespace Raven.Controller
 {
@@ -11,6 +12,7 @@ namespace Raven.Controller
         public string NomeSujeito { get; private set; }
         public string NomeTeste { get; private set; }
         public int Idade { get; private set; }
+        public string MomentoInicial { get; private set; }
         public string[] Imagens { get; private set; }
         public int NoRespostasCorretas { get; private set; }
         private List<double> Tempos { get; set; }
@@ -46,6 +48,9 @@ namespace Raven.Controller
 
             // Checando se os dados carregados estão corretos
             //Console.WriteLine(OpcoesCorretas.Aggregate("", (box, it) => $"{box} {it}"));
+
+            // Marcando começo do teste
+            MomentoInicial = DateTime.Now.ToString(new CultureInfo("pt-BR"));
         }
 
         public void OuvirResposta(int rodada, int resposta)
@@ -77,14 +82,15 @@ namespace Raven.Controller
         public void RegistrarCronometro()
         {
             List<string> linhas = new List<string>();
-
-            // TODO Formatar saída a partir da especificação
-            linhas.Add(this.CalcularResultado());
-            linhas.Add(Respostas.Aggregate("Respostas", (box, it) => $"{box}\t{it}"));
-            linhas.Add(Tempos.Aggregate("Tempos", (box, it) => $"{box}\t{it}"));
-
+            var resultado = this.CalcularResultado().Split('\t');
             CamadaAcessoDados.Salvar(CamadaAcessoDados.GerarResultado(NomeSujeito),
-                                     linhas.ToArray<string>());
+                                     Infra.Formatter.Format(resultado[0],
+                                                            resultado[1],
+                                                            MomentoInicial,
+                                                            Respostas.Select((it) => it.ToString())
+                                                                     .ToArray<string>(),
+                                                            Tempos.Select((it) => it.ToString())
+                                                                  .ToArray<string>()));
         }
 
     }
