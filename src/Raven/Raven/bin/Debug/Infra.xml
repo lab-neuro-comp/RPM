@@ -8,12 +8,12 @@
  the percentile the subject belongs to.
 </summary>
 </member>
-<member name="M:Infra.Calculator.getPercentileLoop(System.String[][],System.Int32,System.Int32,System.Int32)">
+<member name="M:Infra.Calculator.getPercentile(System.String[][],System.Int32,System.Int32)">
 <summary>
  Gets the percentile based on choosen column and on the score
 </summary>
 </member>
-<member name="M:Infra.Calculator.getColumnLoop(System.String[],System.Int32,System.Int32)">
+<member name="M:Infra.Calculator.getColumn(System.String[],System.Int32)">
 <summary>
  Gets the column the age belongs to.
 </summary>

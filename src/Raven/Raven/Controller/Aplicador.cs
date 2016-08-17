@@ -3,21 +3,26 @@ using System.Collections.Generic;
 using Raven.Model;
 using System.Linq;
 using Infra;
+using System.Globalization;
 
 namespace Raven.Controller
 {
     public class Aplicador
     {
+        public string NomeSujeito { get; private set; }
         public string NomeTeste { get; private set; }
         public int Idade { get; private set; }
+        public string MomentoInicial { get; private set; }
         public string[] Imagens { get; private set; }
         public int NoRespostasCorretas { get; private set; }
         private List<double> Tempos { get; set; }
+        private List<int> Respostas { get; set; }
         public int[] NoOpcoes { get; private set; }
         public int[] OpcoesCorretas { get; private set; }
 
-        public Aplicador(string nomeTeste, int idade)
+        public Aplicador(string nomeSujeito, string nomeTeste, int idade)
         {
+            this.NomeSujeito = nomeSujeito;
             this.NomeTeste = nomeTeste;
             this.Idade = idade;
         }
@@ -32,6 +37,7 @@ namespace Raven.Controller
             // Preparando resultados do teste
             NoRespostasCorretas = 0;
             Tempos = new List<double>();
+            Respostas = new List<int>();
 
             // Preparando parâmetros do teste
             string parametros = CamadaAcessoDados.GerarParametrosPeloTeste(NomeTeste);
@@ -42,10 +48,14 @@ namespace Raven.Controller
 
             // Checando se os dados carregados estão corretos
             //Console.WriteLine(OpcoesCorretas.Aggregate("", (box, it) => $"{box} {it}"));
+
+            // Marcando começo do teste
+            MomentoInicial = DateTime.Now.ToString(new CultureInfo("pt-BR"));
         }
 
         public void OuvirResposta(int rodada, int resposta)
         {
+            Respostas.Add(resposta);
             if (OpcoesCorretas[rodada] == resposta)
             {
                 NoRespostasCorretas++;
@@ -65,9 +75,23 @@ namespace Raven.Controller
             string[][] tabela = Infra.ParamExtractor.GenerateTableFromCsv(dadosPuros);
 
             // calculando resultado
-            // TODO Calcular resultado
             int percentil = Infra.Calculator.CalculateResult(tabela, NoRespostasCorretas, Idade);
-            return $"{percentil} {NoRespostasCorretas}";
+            return $"{percentil}\t{NoRespostasCorretas}";
         }
+
+        public void RegistrarCronometro()
+        {
+            List<string> linhas = new List<string>();
+            var resultado = this.CalcularResultado().Split('\t');
+            CamadaAcessoDados.Salvar(CamadaAcessoDados.GerarResultado(NomeSujeito),
+                                     Infra.Formatter.Format(resultado[0],
+                                                            resultado[1],
+                                                            MomentoInicial,
+                                                            Respostas.Select((it) => it.ToString())
+                                                                     .ToArray<string>(),
+                                                            Tempos.Select((it) => it.ToString())
+                                                                  .ToArray<string>()));
+        }
+
     }
 }

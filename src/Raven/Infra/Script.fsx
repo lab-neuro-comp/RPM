@@ -1,8 +1,9 @@
-﻿// Learn more about F# at http://fsharp.org. See the 'F# Tutorial' project
-// for more guidance on F# programming.
+﻿#load "Preparer.fs"
+#load "Calculator.fs"
+#load "ParamExtractor.fs"
 
-#load "Library1.fs"
-open Infra
+let main =
+    printfn "Hello joe"
+    0
 
-// Define your library scripting code here
-
+main

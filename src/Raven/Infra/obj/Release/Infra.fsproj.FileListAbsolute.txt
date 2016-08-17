@@ -1,0 +1,7 @@
+C:\Users\cris\Documents\work\Lab\RPM\src\Raven\Infra\bin\Release\Infra.XML
+C:\Users\cris\Documents\work\Lab\RPM\src\Raven\Infra\bin\Release\Infra.dll
+C:\Users\cris\Documents\work\Lab\RPM\src\Raven\Infra\bin\Release\Infra.pdb
+C:\Users\cris\Documents\work\Lab\RPM\src\Raven\Infra\bin\Release\FSharp.Core.dll
+C:\Users\cris\Documents\work\Lab\RPM\src\Raven\Infra\bin\Release\FSharp.Core.xml
+C:\Users\cris\Documents\work\Lab\RPM\src\Raven\Infra\obj\Release\Infra.dll
+C:\Users\cris\Documents\work\Lab\RPM\src\Raven\Infra\obj\Release\Infra.pdb

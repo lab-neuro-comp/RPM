@@ -9,6 +9,7 @@ namespace Raven.Model
     public class CamadaAcessoDados
     {
         public static string CaminhoAtual = @".\assets\";
+        public static string CaminhoResultados = @".\results\";
         public static string CaminhoConfig = @"config\versions.txt";
         public static string CaminhoDados = @"config\";
 
@@ -35,6 +36,10 @@ namespace Raven.Model
             return CaminhoAtual + CaminhoDados + teste + ".csv";
         }
 
+        public static string GerarResultado(string sujeito)
+        {
+            return CaminhoResultados + sujeito + ".csv";
+        }
 
         public static string[] CarregarImagens(string test, string img, int noImgs)
         {
@@ -51,6 +56,11 @@ namespace Raven.Model
                 }
 
             return imgs;
+        }
+
+        public static void Salvar(string onde, string[] linhas)
+        {
+            File.WriteAllLines(onde, linhas);
         }
     }
 }
