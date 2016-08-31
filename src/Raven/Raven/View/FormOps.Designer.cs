@@ -54,10 +54,11 @@
             // 
             // picMain
             // 
-            this.picMain.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.picMain.Location = new System.Drawing.Point(205, 3);
+            this.picMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.picMain.Location = new System.Drawing.Point(3, 3);
             this.picMain.Name = "picMain";
-            this.picMain.Size = new System.Drawing.Size(319, 232);
+            this.picMain.Size = new System.Drawing.Size(724, 233);
+            this.picMain.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picMain.TabIndex = 0;
             this.picMain.TabStop = false;
             // 

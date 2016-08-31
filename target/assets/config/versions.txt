@@ -1,2 +1,2 @@
-img Infantil
-pg Adulto
+cor Infantil
+geral Adulto
