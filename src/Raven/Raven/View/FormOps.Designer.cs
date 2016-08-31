@@ -63,80 +63,97 @@
             // 
             // picOp1
             // 
-            this.picOp1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.picOp1.Location = new System.Drawing.Point(23, 7);
+            this.picOp1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.picOp1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.picOp1.ImageLocation = "";
+            this.picOp1.Location = new System.Drawing.Point(3, 3);
             this.picOp1.Name = "picOp1";
-            this.picOp1.Size = new System.Drawing.Size(134, 103);
+            this.picOp1.Size = new System.Drawing.Size(175, 111);
+            this.picOp1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picOp1.TabIndex = 1;
             this.picOp1.TabStop = false;
             this.picOp1.Click += new System.EventHandler(this.picOp1_Click);
             // 
             // picOp2
             // 
-            this.picOp2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.picOp2.Location = new System.Drawing.Point(23, 124);
+            this.picOp2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.picOp2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.picOp2.Location = new System.Drawing.Point(3, 120);
             this.picOp2.Name = "picOp2";
-            this.picOp2.Size = new System.Drawing.Size(134, 103);
+            this.picOp2.Size = new System.Drawing.Size(175, 111);
+            this.picOp2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picOp2.TabIndex = 4;
             this.picOp2.TabStop = false;
             this.picOp2.Click += new System.EventHandler(this.picOp2_Click);
             // 
             // picOp3
             // 
-            this.picOp3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.picOp3.Location = new System.Drawing.Point(204, 7);
+            this.picOp3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.picOp3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.picOp3.Location = new System.Drawing.Point(184, 3);
             this.picOp3.Name = "picOp3";
-            this.picOp3.Size = new System.Drawing.Size(134, 103);
+            this.picOp3.Size = new System.Drawing.Size(175, 111);
+            this.picOp3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picOp3.TabIndex = 5;
             this.picOp3.TabStop = false;
             this.picOp3.Click += new System.EventHandler(this.picOp3_Click);
             // 
             // picOp4
             // 
-            this.picOp4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.picOp4.Location = new System.Drawing.Point(204, 124);
+            this.picOp4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.picOp4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.picOp4.Location = new System.Drawing.Point(184, 120);
             this.picOp4.Name = "picOp4";
-            this.picOp4.Size = new System.Drawing.Size(134, 103);
+            this.picOp4.Size = new System.Drawing.Size(175, 111);
+            this.picOp4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picOp4.TabIndex = 7;
             this.picOp4.TabStop = false;
             this.picOp4.Click += new System.EventHandler(this.picOp4_Click);
             // 
             // picOp5
             // 
-            this.picOp5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.picOp5.Location = new System.Drawing.Point(385, 7);
+            this.picOp5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.picOp5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.picOp5.Location = new System.Drawing.Point(365, 3);
             this.picOp5.Name = "picOp5";
-            this.picOp5.Size = new System.Drawing.Size(134, 103);
+            this.picOp5.Size = new System.Drawing.Size(175, 111);
+            this.picOp5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picOp5.TabIndex = 8;
             this.picOp5.TabStop = false;
             this.picOp5.Click += new System.EventHandler(this.picOp5_Click);
             // 
             // picOp6
             // 
-            this.picOp6.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.picOp6.Location = new System.Drawing.Point(385, 124);
+            this.picOp6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.picOp6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.picOp6.Location = new System.Drawing.Point(365, 120);
             this.picOp6.Name = "picOp6";
-            this.picOp6.Size = new System.Drawing.Size(134, 103);
+            this.picOp6.Size = new System.Drawing.Size(175, 111);
+            this.picOp6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picOp6.TabIndex = 9;
             this.picOp6.TabStop = false;
             this.picOp6.Click += new System.EventHandler(this.picOp6_Click);
             // 
             // picOp7
             // 
-            this.picOp7.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.picOp7.Location = new System.Drawing.Point(566, 7);
+            this.picOp7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.picOp7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.picOp7.Location = new System.Drawing.Point(546, 3);
             this.picOp7.Name = "picOp7";
-            this.picOp7.Size = new System.Drawing.Size(134, 103);
+            this.picOp7.Size = new System.Drawing.Size(175, 111);
+            this.picOp7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picOp7.TabIndex = 10;
             this.picOp7.TabStop = false;
             this.picOp7.Click += new System.EventHandler(this.picOp7_Click);
             // 
             // picOp8
             // 
-            this.picOp8.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.picOp8.Location = new System.Drawing.Point(566, 124);
+            this.picOp8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.picOp8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.picOp8.Location = new System.Drawing.Point(546, 120);
             this.picOp8.Name = "picOp8";
-            this.picOp8.Size = new System.Drawing.Size(134, 103);
+            this.picOp8.Size = new System.Drawing.Size(175, 111);
+            this.picOp8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picOp8.TabIndex = 11;
             this.picOp8.TabStop = false;
             this.picOp8.Click += new System.EventHandler(this.picOp8_Click);
