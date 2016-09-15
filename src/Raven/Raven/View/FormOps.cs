@@ -13,6 +13,7 @@ namespace Raven.View
         private PictureBox[] Pics { get; set; }
         private int NoRodada { get; set; }
         private bool Respondeu { get; set; }
+        private int NoRespostas { get; set; }
 
         public FormOps()
         {
@@ -28,6 +29,7 @@ namespace Raven.View
             Pics[5] = picOp6;
             Pics[6] = picOp7;
             Pics[7] = picOp8;
+            NoRespostas = 6;
         }
 
         public FormOps(Aplicador app) : this()
@@ -60,10 +62,10 @@ namespace Raven.View
 
         private void DefinirTela(string[] imagens)
         {
-            int noOps = AjustarOpcoes(imagens.Length-1);
-
+            NoRespostas = AjustarOpcoes(imagens.Length-1);
             picMain.Image = Image.FromFile(imagens[0]);
-            for (int i = 1; i <= noOps; ++i)
+
+            for (int i = 1; i <= NoRespostas; ++i)
             {
                 Pics[i - 1].Image = Image.FromFile(imagens[i]);
             }
@@ -71,30 +73,31 @@ namespace Raven.View
             Show();
         }
 
-        private int AjustarOpcoes(int length)
+        private int AjustarOpcoes(int tamanho)
         {
             bool enabled = true;
 
-            switch (length)
+            switch (tamanho)
             {
                 case 6:
-                    DefinirNoColunas(length);
+                    DefinirNoColunas(tamanho);
                     enabled = false;
                     break;
 
                 case 8:
-                    DefinirNoColunas(length);
+                    DefinirNoColunas(tamanho);
                     enabled = true;
                     break;
             }
 
             picOp7.Enabled = picOp7.Visible = enabled;
             picOp8.Enabled = picOp8.Visible = enabled;
-            return length;
+            return tamanho;
         }
 
         private void ReceberResposta(int resposta)
         {
+            Respondeu = true;
             this.App.OuvirResposta(NoRodada, resposta);
         }
 
@@ -114,39 +117,21 @@ namespace Raven.View
         private void FormOps_KeyUp(object sender, KeyEventArgs e)
         {
             int resposta = 0;
+            string tecla = e.KeyCode.ToString();
 
-            switch (e.KeyCode.ToString())
+            for (int i = 1; i <= NoRespostas; ++i)
             {
-                case "NumPad1":
-                    resposta = 1;
-                    break;
-                case "NumPad2":
-                    resposta = 2;
-                    break;
-                case "NumPad3":
-                    resposta = 3;
-                    break;
-                case "NumPad4":
-                    resposta = 4;
-                    break;
-                case "NumPad5":
-                    resposta = 5;
-                    break;
-                case "NumPad6":
-                    resposta = 6;
-                    break;
-                case "NumPad7":
-                    resposta = 7;
-                    break;
-                case "Numpad8":
-                    resposta = 8;
-                    break;
+                var chute = $"NumPad{i}";
+                if (chute.Equals(tecla))
+                {
+                    resposta = i;
+                }
             }
+
 
             if (resposta > 0)
             {
-                Respondeu = true;
-                App.OuvirResposta(NoRodada, resposta);
+                ReceberResposta(resposta);
             }
 
         }
@@ -156,50 +141,42 @@ namespace Raven.View
         #region Pictures callbacks
         private void picOp1_Click(object sender, EventArgs e)
         {
-            Respondeu = true;
-            App.OuvirResposta(NoRodada, 1);
+            ReceberResposta(1);
         }
 
         private void picOp2_Click(object sender, EventArgs e)
         {
-            Respondeu = true;
-            App.OuvirResposta(NoRodada, 2);
+            ReceberResposta(2);
         }
 
         private void picOp3_Click(object sender, EventArgs e)
         {
-            Respondeu = true;
-            App.OuvirResposta(NoRodada, 3);
+            ReceberResposta(3);
         }
 
         private void picOp4_Click(object sender, EventArgs e)
         {
-            Respondeu = true;
-            App.OuvirResposta(NoRodada, 4);
+            ReceberResposta(4);
         }
 
         private void picOp5_Click(object sender, EventArgs e)
         {
-            Respondeu = true;
-            App.OuvirResposta(NoRodada, 5);
+            ReceberResposta(5);
         }
 
         private void picOp6_Click(object sender, EventArgs e)
         {
-            Respondeu = true;
-            App.OuvirResposta(NoRodada, 6);
+            ReceberResposta(6);
         }
 
         private void picOp7_Click(object sender, EventArgs e)
         {
-            Respondeu = true;
-            App.OuvirResposta(NoRodada, 7);
+            ReceberResposta(7);
         }
 
         private void picOp8_Click(object sender, EventArgs e)
         {
-            Respondeu = true;
-            App.OuvirResposta(NoRodada, 8);
+            ReceberResposta(8);
         }
         #endregion
     }
