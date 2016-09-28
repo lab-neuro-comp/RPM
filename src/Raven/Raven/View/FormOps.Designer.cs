@@ -308,15 +308,15 @@
             this.KeyPreview = true;
             this.Name = "FormOps";
             this.Text = "RPM";
-            //((System.ComponentModel.ISupportInitialize)(this.picMain)).EndInit();
-            //((System.ComponentModel.ISupportInitialize)(this.picOp1)).EndInit();
-            //((System.ComponentModel.ISupportInitialize)(this.picOp2)).EndInit();
-            //((System.ComponentModel.ISupportInitialize)(this.picOp3)).EndInit();
-            //((System.ComponentModel.ISupportInitialize)(this.picOp4)).EndInit();
-            //((System.ComponentModel.ISupportInitialize)(this.picOp5)).EndInit();
-            //((System.ComponentModel.ISupportInitialize)(this.picOp6)).EndInit();
-            //((System.ComponentModel.ISupportInitialize)(this.picOp7)).EndInit();
-            //((System.ComponentModel.ISupportInitialize)(this.picOp8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picMain)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picOp1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picOp2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picOp3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picOp4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picOp5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picOp6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picOp7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picOp8)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableOptions.ResumeLayout(false);
             this.tableOptions.PerformLayout();
@@ -334,15 +334,18 @@
             float proportion = 100F / noColunas;
             int current = 0;
 
+            // Clearing previous configuration
             tableOptions.Controls.Clear();
             tableOptions.ColumnStyles.Clear();
             tableOptions.ColumnCount = noColunas;
 
+            // Resizing columns
             for (int i = 0; i < noColunas; i++)
             {
                 tableOptions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, proportion));
             }
-
+            
+            // Adding components to window
             for (int i = 0; i < noColunas; ++i)
             {
                 for (int j = 0; j < 2; ++j, ++current)
