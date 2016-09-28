@@ -11,11 +11,11 @@ let Format (P: string) (C: string) (S: string) (AS: string[]) (TS: string[]): st
     // T: Times
     let limit = Array.length AS
     let build i =
-        String.Format("{0}\t{1}\t{2}\t{3}\t{4}", S, C, P, (AS.ElementAt i), (TS.ElementAt i))
+        String.Format("{0};{1};{2};{3};{4}", S, C, P, (AS.ElementAt i), (TS.ElementAt i))
     let rec loop box i =
         if i < limit
             then loop (Array.append box [|(build i)|]) (i+1)
             else box
-    let start = [|"Começo\t# Respostas Corretas\tPercentil\tResposta Dada\tTempo"|]
+    let start = [|"Começo;# Respostas Corretas;Percentil;Resposta Dada;Tempo"|]
     loop start 0
 
