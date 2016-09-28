@@ -11,6 +11,7 @@ namespace Raven.View
     {
         private Aplicador App { get; set; }
         private PictureBox[] Pics { get; set; }
+        private Label[] Labels { get; set; }
         private int NoRodada { get; set; }
         private bool Respondeu { get; set; }
         private int NoRespostas { get; set; }
@@ -21,6 +22,7 @@ namespace Raven.View
             WindowState = FormWindowState.Maximized;
             this.KeyUp += new KeyEventHandler(this.FormOps_KeyUp);
             Pics = new PictureBox[8];
+            Labels = new Label[8];
             Pics[0] = picOp1;
             Pics[1] = picOp2;
             Pics[2] = picOp3;
@@ -29,6 +31,14 @@ namespace Raven.View
             Pics[5] = picOp6;
             Pics[6] = picOp7;
             Pics[7] = picOp8;
+            Labels[0] = label1;
+            Labels[1] = label2;
+            Labels[2] = label3;
+            Labels[3] = label4;
+            Labels[4] = label5;
+            Labels[5] = label6;
+            Labels[6] = label7;
+            Labels[7] = label8;
             NoRespostas = 6;
         }
 
