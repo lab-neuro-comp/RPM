@@ -81,16 +81,19 @@ namespace Raven.Controller
 
         public void RegistrarCronometro()
         {
-            List<string> linhas = new List<string>();
+            var tempos = Tempos.Select((it) => it.ToString())
+                               .ToArray();
             var resultado = this.CalcularResultado().Split('\t');
-            CamadaAcessoDados.Salvar(CamadaAcessoDados.GerarResultado(NomeSujeito),
+
+            CamadaAcessoDados.Salvar(CamadaAcessoDados.GerarResultado(NomeSujeito), 
                                      Infra.Formatter.Format(resultado[0],
                                                             resultado[1],
                                                             MomentoInicial,
+                                                            OpcoesCorretas.Select((it) => it.ToString())
+                                                                          .ToArray(),
                                                             Respostas.Select((it) => it.ToString())
-                                                                     .ToArray<string>(),
-                                                            Tempos.Select((it) => it.ToString())
-                                                                  .ToArray<string>()));
+                                                                     .ToArray(),
+                                                            tempos));
         }
 
     }
