@@ -1,18 +1,18 @@
-raven002 6 4
-raven003 6 5
-raven004 6 1
-raven005 6 2
-raven006 6 6
-raven007 6 3
-raven008 6 6
-raven009 6 2
-raven010 6 1
-raven011 6 3
-raven012 6 4
-raven013 6 4
-raven014 6 4
-raven015 6 5
-raven016 6 1
-raven017 6 6
-raven018 6 2
-raven019 6 1
+raven002 6 4 a
+raven003 6 5 a
+raven004 6 1 a
+raven005 6 2 a
+raven006 6 6 a
+raven007 6 3 ab
+raven008 6 6 ab
+raven009 6 2 ab
+raven010 6 1 ab
+raven011 6 3 ab
+raven012 6 4 ab
+raven013 6 4 ab
+raven014 6 4 b
+raven015 6 5 b
+raven016 6 1 b
+raven017 6 6 b
+raven018 6 2 b
+raven019 6 1 b
