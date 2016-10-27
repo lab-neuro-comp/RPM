@@ -2,6 +2,7 @@
 module Infra.ParamExtractor
 open System
 open System.Linq
+open System.Collections.Generic
 
 let GetImages (inlet : string[]) : string[] =
     inlet

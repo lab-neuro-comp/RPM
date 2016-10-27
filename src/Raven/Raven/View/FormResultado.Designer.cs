@@ -76,7 +76,6 @@
             this.lblResultado.Size = new System.Drawing.Size(291, 63);
             this.lblResultado.TabIndex = 2;
             this.lblResultado.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblResultado.Visible = false;
             // 
             // btnSair
             // 

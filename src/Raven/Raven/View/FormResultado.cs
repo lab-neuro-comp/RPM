@@ -16,6 +16,7 @@ namespace Raven.View
             var stuff = resultado.Split('\t');
             lblLevel.Text = stuff[0];
             lblNoRespostasCorretas.Text = stuff[1];
+            lblResultado.Text = stuff[2];
         }
 
         private void btnSair_Click(object sender, EventArgs e)

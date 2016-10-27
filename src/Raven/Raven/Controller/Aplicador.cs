@@ -20,6 +20,7 @@ namespace Raven.Controller
         public int[] NoOpcoes { get; private set; }
         public int[] OpcoesCorretas { get; private set; }
         public string[] Series { get; private set; }
+        public string Validade { get; private set; }
 
         public Aplicador(string nomeSujeito, string nomeTeste, int idade)
         {
@@ -49,7 +50,7 @@ namespace Raven.Controller
             Series = Infra.ParamExtractor.GetSeries(dadosPuros);
 
             // Checando se os dados carregados estão corretos
-            Console.WriteLine(Series.Aggregate("", (box, it) => $"{box}\n{it}"));
+            //Console.WriteLine(Series.Aggregate("", (box, it) => $"{box}\n{it}"));
 
             // Marcando começo do teste
             MomentoInicial = DateTime.Now.ToString(new CultureInfo("pt-BR"));
@@ -71,7 +72,6 @@ namespace Raven.Controller
 
         public string CalcularResultado()
         {
-            // TODO Extrair dados do arquivo XML
             // preparando dados para cálculo
             string arquivoPadrao = CamadaAcessoDados.GerarPadraoPeloTeste(NomeTeste);
             string dadosPuros = CamadaAcessoDados.Tudo(arquivoPadrao);
@@ -80,7 +80,8 @@ namespace Raven.Controller
 
             // calculando resultado
             int percentil = Infra.Calculator.CalculateResult(percentis, NoRespostasCorretas, Idade);
-            return $"{percentil}\t{NoRespostasCorretas}";
+            Validade = ChecarValidade(validades);
+            return $"{percentil}\t{NoRespostasCorretas}\t{Validade}";
         }
 
         public void RegistrarCronometro()
@@ -88,7 +89,6 @@ namespace Raven.Controller
             var tempos = Tempos.Select((it) => it.ToString())
                                .ToArray();
             var resultado = this.CalcularResultado().Split('\t');
-            var validade = ChecarValidade();
 
             CamadaAcessoDados.Salvar(CamadaAcessoDados.GerarResultado(NomeSujeito), 
                                      Infra.Formatter.Format(resultado[0],
@@ -99,16 +99,21 @@ namespace Raven.Controller
                                                             Respostas.Select((it) => it.ToString())
                                                                      .ToArray(),
                                                             tempos,
-                                                            validade));
+                                                            Validade));
         }
 
         /// <summary>
         /// Confere se a execução de um teste foi válida ou não
         /// </summary>
         /// <returns>"VÁLIDO" se a execução foi válida; "INVÁLIDO" caso contrário</returns>
-        private string ChecarValidade()
+        private string ChecarValidade(string[][] validadesPuras)
         {
-            return "";
+            Dictionary<string, int[]> validades;
+
+            // Construindo dicionário de validades
+            var series = validadesPuras[0].Where(it => it.Length > 0);
+
+            return series.Aggregate((box, it) => $"{box} {it}");
         }
     }
 }

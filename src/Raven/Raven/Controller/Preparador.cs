@@ -49,7 +49,16 @@ namespace Raven.Controller
 
             foreach (XmlNode no in nos)
             {
-                linhas.AddLast(no.Value.Split(';'));
+                var colunas = no.Value.Split('\n');
+                foreach (var coluna in colunas)
+                {
+                    var linha = coluna.Trim(' ', '\r');
+                    if (linha.Length > 0)
+                    {
+                        linhas.AddLast(linha.Split(';'));
+                    }
+                }
+                
             }
 
             return linhas.ToArray();
