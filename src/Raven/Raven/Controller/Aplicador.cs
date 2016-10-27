@@ -69,6 +69,7 @@ namespace Raven.Controller
 
         public string CalcularResultado()
         {
+            // TODO Extrair dados do arquivo XML
             // preparando dados para cálculo
             string arquivoPadrao = CamadaAcessoDados.GerarPadraoPeloTeste(NomeTeste);
             string[] dadosPuros = CamadaAcessoDados.CadaLinha(arquivoPadrao);

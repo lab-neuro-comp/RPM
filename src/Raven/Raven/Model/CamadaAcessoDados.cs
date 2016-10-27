@@ -33,7 +33,7 @@ namespace Raven.Model
 
         public static string GerarPadraoPeloTeste(string teste)
         {
-            return CaminhoAtual + CaminhoDados + teste + ".csv";
+            return CaminhoAtual + CaminhoDados + teste + ".xml";
         }
 
         public static string GerarResultado(string sujeito)
