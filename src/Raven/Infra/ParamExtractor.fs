@@ -1,6 +1,5 @@
 #light
 module Infra.ParamExtractor
-
 open System
 open System.Linq
 
@@ -20,6 +19,11 @@ let GetCorrectOptions (inlet : string[]) : int[] =
     |> Array.map(fun it -> it.Split ' ')
     |> Array.map(fun box -> box.ElementAt 2)
     |> Array.map(fun it -> int it)
+
+let GetSeries (inlet : string[]) : string[] = 
+    inlet
+    |> Array.map(fun it -> it.Split ' ')
+    |> Array.map(fun box -> box.ElementAt 3)
 
 let GenerateTableFromCsv (inlet : string[]) : string[][] =
     inlet

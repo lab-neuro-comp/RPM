@@ -19,6 +19,7 @@ namespace Raven.Controller
         private List<int> Respostas { get; set; }
         public int[] NoOpcoes { get; private set; }
         public int[] OpcoesCorretas { get; private set; }
+        public string[] Series { get; private set; }
 
         public Aplicador(string nomeSujeito, string nomeTeste, int idade)
         {
@@ -45,9 +46,10 @@ namespace Raven.Controller
             Imagens = Infra.ParamExtractor.GetImages(dadosPuros);
             NoOpcoes = Infra.ParamExtractor.GetNoOptions(dadosPuros);
             OpcoesCorretas = Infra.ParamExtractor.GetCorrectOptions(dadosPuros);
+            Series = Infra.ParamExtractor.GetSeries(dadosPuros);
 
             // Checando se os dados carregados estão corretos
-            //Console.WriteLine(OpcoesCorretas.Aggregate("", (box, it) => $"{box} {it}"));
+            Console.WriteLine(Series.Aggregate("", (box, it) => $"{box}\n{it}"));
 
             // Marcando começo do teste
             MomentoInicial = DateTime.Now.ToString(new CultureInfo("pt-BR"));
@@ -72,11 +74,12 @@ namespace Raven.Controller
             // TODO Extrair dados do arquivo XML
             // preparando dados para cálculo
             string arquivoPadrao = CamadaAcessoDados.GerarPadraoPeloTeste(NomeTeste);
-            string[] dadosPuros = CamadaAcessoDados.CadaLinha(arquivoPadrao);
-            string[][] tabela = Infra.ParamExtractor.GenerateTableFromCsv(dadosPuros);
+            string dadosPuros = CamadaAcessoDados.Tudo(arquivoPadrao);
+            string[][] percentis = Preparador.ExtrairTabela(dadosPuros, "percentile");
+            string[][] validades = Preparador.ExtrairTabela(dadosPuros, "validity");
 
             // calculando resultado
-            int percentil = Infra.Calculator.CalculateResult(tabela, NoRespostasCorretas, Idade);
+            int percentil = Infra.Calculator.CalculateResult(percentis, NoRespostasCorretas, Idade);
             return $"{percentil}\t{NoRespostasCorretas}";
         }
 
@@ -85,6 +88,7 @@ namespace Raven.Controller
             var tempos = Tempos.Select((it) => it.ToString())
                                .ToArray();
             var resultado = this.CalcularResultado().Split('\t');
+            var validade = ChecarValidade();
 
             CamadaAcessoDados.Salvar(CamadaAcessoDados.GerarResultado(NomeSujeito), 
                                      Infra.Formatter.Format(resultado[0],
@@ -94,8 +98,17 @@ namespace Raven.Controller
                                                                           .ToArray(),
                                                             Respostas.Select((it) => it.ToString())
                                                                      .ToArray(),
-                                                            tempos));
+                                                            tempos,
+                                                            validade));
         }
 
+        /// <summary>
+        /// Confere se a execução de um teste foi válida ou não
+        /// </summary>
+        /// <returns>"VÁLIDO" se a execução foi válida; "INVÁLIDO" caso contrário</returns>
+        private string ChecarValidade()
+        {
+            return "";
+        }
     }
 }

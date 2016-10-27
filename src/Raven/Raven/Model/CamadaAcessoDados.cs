@@ -13,6 +13,11 @@ namespace Raven.Model
         public static string CaminhoConfig = @"config\versions.txt";
         public static string CaminhoDados = @"config\";
 
+        public static string Tudo(string entrada)
+        {
+            return File.ReadAllText(entrada);
+        }
+
         public static string[] CadaLinha(string entrada)
         {
             StreamReader arquivo = new StreamReader(entrada);

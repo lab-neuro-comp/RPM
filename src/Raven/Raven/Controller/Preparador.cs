@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Infra;
 using Raven.Model;
+using System.Xml;
 
 namespace Raven.Controller
 {
@@ -33,6 +35,24 @@ namespace Raven.Controller
 
             this.Caminhos = paths.ToArray();
             this.Testes = tests.ToArray();
+        }
+
+        public static string[][] ExtrairTabela(string dadoPuro, string tag)
+        {
+            var xml = new XmlDocument();
+            var spec = $"/test/{tag}/text()";
+            var linhas = new LinkedList<string[]>();
+            XmlNodeList nos;
+            
+            xml.LoadXml(dadoPuro);
+            nos = xml.SelectNodes(spec);
+
+            foreach (XmlNode no in nos)
+            {
+                linhas.AddLast(no.Value.Split(';'));
+            }
+
+            return linhas.ToArray();
         }
     }
 }

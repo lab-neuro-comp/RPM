@@ -45,7 +45,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
-    <Compile Include="Preparer.fs" />
     <None Include="Script.fsx" />
     <Compile Include="ParamExtractor.fs" />
     <Compile Include="Calculator.fs" />
