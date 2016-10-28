@@ -108,18 +108,33 @@ namespace Raven.Controller
         /// <returns>"VÁLIDO" se a execução foi válida; "INVÁLIDO" caso contrário</returns>
         private string ChecarValidade(string[][] validadesPuras)
         {
-            Dictionary<string, int[]> validades = new Dictionary<string, int[]>();
-            string[] series = Infra.ParamExtractor.GetSeriesList(validadesPuras);
-            int notaMaxima = Infra.ParamExtractor.GetTopResult(validadesPuras);
-            int notaMinima = Infra.ParamExtractor.GetFloorResult(validadesPuras);
+            /*
+            # Input
+            + Test description, relating questions to series
+            + Validity table, relating # of correct answers and expected results in each series
+            + List of answers given by the subject
 
-            // Construindo dicionário de validades
-            foreach (var serie in series)
+            # Output
+            + Test validity
+            */
+
+            Dictionary<string, int> respostasPorSerie = new Dictionary<string, int>();
+            int 
+            int tamanhoDoTeste = Respostas.Count;
+
+            // Construindo respostas por série
+            for (int i = 0; i < tamanhoDoTeste; ++i)
             {
-                validades.Add(serie, new int[notaMaxima+1]);
+                var serie = Series[i];
+                var contagem = 0;
+                var correto = Respostas.ElementAt(i) == OpcoesCorretas[i];
+
+                respostasPorSerie.TryGetValue(serie, out contagem);
+                respostasPorSerie.Add(serie, contagem + ((correto)? 1 : 0));
             }
 
-            return $"{notaMaxima} {notaMinima}";
+            // Checando se está certo
+            return respostasPorSerie.Aggregate("", (box, it) => $"{box}\n{it.Key}: {it.Value}");
         }
     }
 }
