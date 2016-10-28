@@ -114,12 +114,17 @@ namespace Raven.Controller
             + Validity table, relating # of correct answers and expected results in each series
             + List of answers given by the subject
 
+            # Midput
+            + Map relating the series and the # of correct answers given by the subject
+            + Map relating the series and the expected # of correct answers as prescribed by the subject's # of correct answers
+
             # Output
             + Test validity
             */
 
             Dictionary<string, int> respostasPorSerie = new Dictionary<string, int>();
-            int 
+            Dictionary<string, int> repostasEsperadas = null;
+            string saida = "INVÁLIDO";
             int tamanhoDoTeste = Respostas.Count;
 
             // Construindo respostas por série
@@ -133,8 +138,12 @@ namespace Raven.Controller
                 respostasPorSerie.Add(serie, contagem + ((correto)? 1 : 0));
             }
 
+            // Construindo respostas esperadas
+            var series = validadesPuras[0].Where((it) => it.Length > 0);
+
             // Checando se está certo
-            return respostasPorSerie.Aggregate("", (box, it) => $"{box}\n{it.Key}: {it.Value}");
+            saida = series.Aggregate("", (box, it) => $"{box} {it}");
+            return saida;
         }
     }
 }
