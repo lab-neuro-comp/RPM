@@ -147,17 +147,17 @@ namespace Raven.Controller
                 return saida;
 
             // Construindo respostas por série
-            ObterTamanhoDoTeste();
-            for (int i = 0; i < TamanhoDoTeste; ++i)
-            {
-                var serie = Series[i];
-                var contagem = 0;
-                var correto = (Respostas.ElementAt(i) == OpcoesCorretas[i]);
+            //ObterTamanhoDoTeste();
+            //for (int i = 0; i < TamanhoDoTeste; ++i)
+            //{
+            //    var serie = Series[i];
+            //    var contagem = 0;
+            //    var correto = (Respostas.ElementAt(i) == OpcoesCorretas[i]);
 
-                respostasPorSerie.TryGetValue(serie, out contagem);
-                respostasPorSerie[serie] = contagem + ((correto) ? 1 : 0);
-            }
-            //respostasPorSerie = RelacionarSeriesERespostas();
+            //    respostasPorSerie.TryGetValue(serie, out contagem);
+            //    respostasPorSerie[serie] = contagem + ((correto) ? 1 : 0);
+            //}
+            respostasPorSerie = RelacionarSeriesERespostas();
 
             // Construindo respostas esperadas
             var series = Infra.ParamExtractor.GetSeriesList(validadesPuras);

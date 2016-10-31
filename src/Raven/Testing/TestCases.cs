@@ -14,7 +14,14 @@ namespace Testing
 
         static void Main(string[] args)
         {
-            Console.WriteLine("--- # Testing 'cor' test");
+            RunWithTest("valid", GenerateAnswersForColorful());
+            RunWithTest("invalid", GenerateInvalidAnswers(36));
+            Console.ReadLine();
+        }
+
+        static void RunWithTest(string tag, int[] test)
+        {
+            Console.WriteLine($"--- # Testing {tag} test");
             App = new Aplicador("lil one", "cor", 9);
             Stopwatch clock = new Stopwatch();
             App.PrepararTeste();
@@ -23,8 +30,7 @@ namespace Testing
             for (var i = 0; i < App.ObterTamanhoDoTeste(); ++i)
             {
                 clock.Start();
-                //var resposta = GenerateAnswersForColorful()[i];
-                var resposta = GenerateInvalidAnswers(App.TamanhoDoTeste)[i];
+                var resposta = test[i];
                 Console.WriteLine("- " + resposta);
                 App.OuvirResposta(i, resposta);
                 clock.Stop();
@@ -32,17 +38,15 @@ namespace Testing
                 clock.Reset();
 
             }
-            Console.WriteLine("# Respostas corretas: " + App.NoRespostasCorretas);
-            Console.WriteLine("--- # Assessing results");
+            Console.WriteLine("No Respostas corretas: " + App.NoRespostasCorretas);
+            Console.WriteLine("# Assessing results");
             Console.WriteLine($"Resultado calculado:\n\t{App.CalcularResultado()}");
-            Console.WriteLine("--- # Turning stuff functional");
+            Console.WriteLine("# Turning stuff functional");
             var rsr = App.RelacionarSeriesERespostas();
             foreach (var key in rsr.Keys)
             {
                 Console.WriteLine($"{key}: {rsr[key]}");
             }
-            Console.WriteLine("...");
-            Console.ReadLine();
         }
 
         static int[] GenerateAnswersForColorful()
