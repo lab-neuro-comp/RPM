@@ -154,10 +154,18 @@ namespace Raven.Controller
             // Construindo respostas esperadas
             var series = validadesPuras[0].Where((it) => it.Length > 0);
             var indice = NoRespostasCorretas - notaMinima + 1;
-            var linha = validadesPuras[indice];
+            var validades = validadesPuras[indice];
+            var valido = true;
+            for (int j = 0; (j < series.Count()) && valido; ++j)
+            {
+                var esperado = -1;
+                var coletado = respostasPorSerie[series.ElementAt(j)];
+                int.TryParse(validades[j+1], out esperado);
+                if (esperado < 0) throw new Exception();
+                valido = Math.Abs(coletado - esperado) <= 2;
+            }
+            saida = (valido) ? "VÁLIDO" : "INVÁLIDO";
 
-            // Checando se está certo
-            saida = $"{NoRespostasCorretas} {linha[0]}";
             return saida;
         }
     }

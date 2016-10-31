@@ -23,7 +23,8 @@ namespace Testing
             for (var i = 0; i < App.ObterTamanhoDoTeste(); ++i)
             {
                 clock.Start();
-                var resposta = GenerateAnswersForColorful()[i];
+                //var resposta = GenerateAnswersForColorful()[i];
+                var resposta = GenerateInvalidAnswers(App.TamanhoDoTeste)[i];
                 Console.WriteLine("- " + resposta);
                 App.OuvirResposta(i, resposta);
                 clock.Stop();
@@ -33,7 +34,7 @@ namespace Testing
             }
             Console.WriteLine("# Respostas corretas: " + App.NoRespostasCorretas);
             Console.WriteLine("--- # Assessing results");
-            Console.WriteLine($"Resultado calculado: {App.CalcularResultado()}");
+            Console.WriteLine($"Resultado calculado:\n\t{App.CalcularResultado()}");
             Console.WriteLine("...");
             Console.ReadLine();
         }
@@ -45,10 +46,16 @@ namespace Testing
                                2, 6, 1, 2, 2, 1, 5 ,6 ,6 ,3, 4, 5, 5};
         }
 
-        static void Load()
+        static int[] GenerateInvalidAnswers(int size)
         {
-            
-        }
+            List<int> answers = new List<int>();
 
+            for (int i = 0; i < size; ++i)
+            {
+                answers.Add((i % 6) + 1);
+            }
+
+            return answers.ToArray();
+        }
     }
 }
