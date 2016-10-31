@@ -109,6 +109,14 @@ namespace Raven.Controller
                                                             Validade));
         }
 
+        public Dictionary<string, int> RelacionarSeriesERespostas()
+        {
+            var x = Infra.ParamExtractor.RelateSeriesAndAnswers(Series,
+                                                                OpcoesCorretas,
+                                                                Respostas.ToArray());
+            return new Dictionary<string, int>(x);
+        }
+
         /// <summary>
         /// Confere se a execução de um teste foi válida ou não
         /// </summary>
@@ -130,7 +138,6 @@ namespace Raven.Controller
             */
 
             Dictionary<string, int> respostasPorSerie = new Dictionary<string, int>();
-            Dictionary<string, int> repostasEsperadas = null;
             int notaMaxima = Infra.ParamExtractor.GetTopResult(validadesPuras);
             int notaMinima = Infra.ParamExtractor.GetFloorResult(validadesPuras);
             string saida = "INVÁLIDO";
@@ -150,9 +157,10 @@ namespace Raven.Controller
                 respostasPorSerie.TryGetValue(serie, out contagem);
                 respostasPorSerie[serie] = contagem + ((correto) ? 1 : 0);
             }
+            //respostasPorSerie = RelacionarSeriesERespostas();
 
             // Construindo respostas esperadas
-            var series = validadesPuras[0].Where((it) => it.Length > 0);
+            var series = Infra.ParamExtractor.GetSeriesList(validadesPuras);
             var indice = NoRespostasCorretas - notaMinima + 1;
             var validades = validadesPuras[indice];
             var valido = true;

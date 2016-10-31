@@ -35,6 +35,12 @@ namespace Testing
             Console.WriteLine("# Respostas corretas: " + App.NoRespostasCorretas);
             Console.WriteLine("--- # Assessing results");
             Console.WriteLine($"Resultado calculado:\n\t{App.CalcularResultado()}");
+            Console.WriteLine("--- # Turning stuff functional");
+            var rsr = App.RelacionarSeriesERespostas();
+            foreach (var key in rsr.Keys)
+            {
+                Console.WriteLine($"{key}: {rsr[key]}");
+            }
             Console.WriteLine("...");
             Console.ReadLine();
         }

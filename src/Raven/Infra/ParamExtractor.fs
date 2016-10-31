@@ -49,3 +49,17 @@ let GetFloorResult (table : string[][]) : int =
 let GetSeriesList (table : string[][]) : string[] =
     table.ElementAt 0
     |> Array.filter (fun it -> it.Length > 0)
+
+(* Relates the series to the given answers *)
+let RelateSeriesAndAnswers (series : string[]) (expected : int[]) (collected : int[]) : Map<string, int> =
+    let rec loop (map : Map<string, int>) limit i =
+        if i = limit
+            then map
+            else let current = series.ElementAt i
+                 if map.ContainsKey current
+                    then let correct = ((expected.ElementAt i) = (collected.ElementAt i))
+                         let counting = map.[current] + if correct then 1 else 0
+                         loop (map.Add(current, counting)) limit (i+1)
+                    else loop (map.Add(current, 1)) limit (i+1)
+    loop Map.empty (series.Length) 0
+
