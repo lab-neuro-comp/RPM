@@ -21,6 +21,7 @@ namespace Raven.Controller
         public int[] OpcoesCorretas { get; private set; }
         public string[] Series { get; private set; }
         public string Validade { get; private set; }
+        public int TamanhoDoTeste { get; private set; }
 
         public Aplicador(string nomeSujeito, string nomeTeste, int idade)
         {
@@ -36,7 +37,8 @@ namespace Raven.Controller
 
         public int ObterTamanhoDoTeste()
         {
-            return this.Imagens.Length;
+            this.TamanhoDoTeste = this.Imagens.Length;
+            return TamanhoDoTeste;
         }
 
         public void PrepararTeste()
@@ -132,21 +134,21 @@ namespace Raven.Controller
             int notaMaxima = Infra.ParamExtractor.GetTopResult(validadesPuras);
             int notaMinima = Infra.ParamExtractor.GetFloorResult(validadesPuras);
             string saida = "INVÁLIDO";
-            int tamanhoDoTeste = Respostas.Count;
 
             // Checando caso base
             if ((NoRespostasCorretas < notaMinima) || (NoRespostasCorretas > notaMaxima))
                 return saida;
 
             // Construindo respostas por série
-            for (int i = 0; i < tamanhoDoTeste; ++i)
+            ObterTamanhoDoTeste();
+            for (int i = 0; i < TamanhoDoTeste; ++i)
             {
                 var serie = Series[i];
                 var contagem = 0;
-                var correto = Respostas.ElementAt(i) == OpcoesCorretas[i];
+                var correto = (Respostas.ElementAt(i) == OpcoesCorretas[i]);
 
                 respostasPorSerie.TryGetValue(serie, out contagem);
-                respostasPorSerie.Add(serie, contagem + ((correto)? 1 : 0));
+                respostasPorSerie[serie] = contagem + ((correto) ? 1 : 0);
             }
 
             // Construindo respostas esperadas

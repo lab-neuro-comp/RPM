@@ -32,8 +32,8 @@ namespace Testing
 
             }
             Console.WriteLine("# Respostas corretas: " + App.NoRespostasCorretas);
-            Console.WriteLine("---");
-            // TODO Analyze results
+            Console.WriteLine("--- # Assessing results");
+            Console.WriteLine($"Resultado calculado: {App.CalcularResultado()}");
             Console.WriteLine("...");
             Console.ReadLine();
         }
