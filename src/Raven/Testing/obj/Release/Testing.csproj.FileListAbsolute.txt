@@ -1,0 +1,13 @@
+C:\Users\cris\Documents\work\Lab\src\github.com\lab-neuro-comp\RPM\src\Raven\Testing\bin\Release\Testing.exe.config
+C:\Users\cris\Documents\work\Lab\src\github.com\lab-neuro-comp\RPM\src\Raven\Testing\bin\Release\Testing.exe
+C:\Users\cris\Documents\work\Lab\src\github.com\lab-neuro-comp\RPM\src\Raven\Testing\bin\Release\Testing.pdb
+C:\Users\cris\Documents\work\Lab\src\github.com\lab-neuro-comp\RPM\src\Raven\Testing\bin\Release\Infra.dll
+C:\Users\cris\Documents\work\Lab\src\github.com\lab-neuro-comp\RPM\src\Raven\Testing\bin\Release\FSharp.Core.dll
+C:\Users\cris\Documents\work\Lab\src\github.com\lab-neuro-comp\RPM\src\Raven\Testing\bin\Release\Infra.pdb
+C:\Users\cris\Documents\work\Lab\src\github.com\lab-neuro-comp\RPM\src\Raven\Testing\bin\Release\Infra.xml
+C:\Users\cris\Documents\work\Lab\src\github.com\lab-neuro-comp\RPM\src\Raven\Testing\bin\Release\FSharp.Core.xml
+C:\Users\cris\Documents\work\Lab\src\github.com\lab-neuro-comp\RPM\src\Raven\Testing\obj\Release\Testing.csprojResolveAssemblyReference.cache
+C:\Users\cris\Documents\work\Lab\src\github.com\lab-neuro-comp\RPM\src\Raven\Testing\obj\Release\Testing.exe
+C:\Users\cris\Documents\work\Lab\src\github.com\lab-neuro-comp\RPM\src\Raven\Testing\obj\Release\Testing.pdb
+C:\Users\cris\Documents\work\Lab\src\github.com\lab-neuro-comp\RPM\src\Raven\Testing\bin\Release\Raven.exe
+C:\Users\cris\Documents\work\Lab\src\github.com\lab-neuro-comp\RPM\src\Raven\Testing\bin\Release\Raven.pdb

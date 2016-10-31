@@ -34,6 +34,11 @@ namespace Raven.Controller
             return CamadaAcessoDados.CarregarImagens(NomeTeste, Imagens[rodada], NoOpcoes[rodada]);
         }
 
+        public int ObterTamanhoDoTeste()
+        {
+            return this.Imagens.Length;
+        }
+
         public void PrepararTeste()
         {
             // Preparando resultados do teste
