@@ -19,3 +19,6 @@ C:\Users\cris\Documents\work\Lab\RPM\src\Raven\Raven\bin\Debug\Infra.xml
 C:\Users\cris\Documents\work\Lab\RPM\src\Raven\Raven\bin\Debug\FSharp.Core.xml
 C:\Users\cris\Documents\work\Lab\RPM\src\Raven\Raven\obj\Debug\Raven.View.FormPre.resources
 >>>>>>> 41135b05a63c7c1c3f50e82b01bfd564fe77d1e9
+C:\Users\neuro\Documents\Lab\src\github.com\lab-neuro-comp\RPM\src\Raven\Raven\bin\Debug\Raven.exe.config
+C:\Users\neuro\Documents\Lab\src\github.com\lab-neuro-comp\RPM\src\Raven\Raven\obj\Debug\Raven.exe
+C:\Users\neuro\Documents\Lab\src\github.com\lab-neuro-comp\RPM\src\Raven\Raven\obj\Debug\Raven.pdb
