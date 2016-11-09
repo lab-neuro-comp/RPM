@@ -11,3 +11,16 @@ C:\Users\cris\Documents\work\Lab\src\github.com\lab-neuro-comp\RPM\src\Raven\Tes
 C:\Users\cris\Documents\work\Lab\src\github.com\lab-neuro-comp\RPM\src\Raven\Testing\obj\Release\Testing.pdb
 C:\Users\cris\Documents\work\Lab\src\github.com\lab-neuro-comp\RPM\src\Raven\Testing\bin\Release\Raven.exe
 C:\Users\cris\Documents\work\Lab\src\github.com\lab-neuro-comp\RPM\src\Raven\Testing\bin\Release\Raven.pdb
+C:\Users\neuro\Documents\Lab\src\github.com\lab-neuro-comp\RPM\src\Raven\Testing\bin\Release\Testing.exe.config
+C:\Users\neuro\Documents\Lab\src\github.com\lab-neuro-comp\RPM\src\Raven\Testing\obj\Release\Testing.pdb
+C:\Users\neuro\Documents\Lab\src\github.com\lab-neuro-comp\RPM\src\Raven\Testing\bin\Release\Testing.exe
+C:\Users\neuro\Documents\Lab\src\github.com\lab-neuro-comp\RPM\src\Raven\Testing\bin\Release\Testing.pdb
+C:\Users\neuro\Documents\Lab\src\github.com\lab-neuro-comp\RPM\src\Raven\Testing\bin\Release\Infra.dll
+C:\Users\neuro\Documents\Lab\src\github.com\lab-neuro-comp\RPM\src\Raven\Testing\bin\Release\Raven.exe
+C:\Users\neuro\Documents\Lab\src\github.com\lab-neuro-comp\RPM\src\Raven\Testing\bin\Release\FSharp.Core.dll
+C:\Users\neuro\Documents\Lab\src\github.com\lab-neuro-comp\RPM\src\Raven\Testing\bin\Release\Infra.pdb
+C:\Users\neuro\Documents\Lab\src\github.com\lab-neuro-comp\RPM\src\Raven\Testing\bin\Release\Infra.xml
+C:\Users\neuro\Documents\Lab\src\github.com\lab-neuro-comp\RPM\src\Raven\Testing\bin\Release\Raven.pdb
+C:\Users\neuro\Documents\Lab\src\github.com\lab-neuro-comp\RPM\src\Raven\Testing\bin\Release\FSharp.Core.xml
+C:\Users\neuro\Documents\Lab\src\github.com\lab-neuro-comp\RPM\src\Raven\Testing\obj\Release\Testing.csprojResolveAssemblyReference.cache
+C:\Users\neuro\Documents\Lab\src\github.com\lab-neuro-comp\RPM\src\Raven\Testing\obj\Release\Testing.exe

@@ -22,6 +22,7 @@ namespace Raven.Controller
         public string[] Series { get; private set; }
         public string Validade { get; private set; }
         public int TamanhoDoTeste { get; private set; }
+        public int Percentil { get; private set; }
 
         public Aplicador(string nomeSujeito, string nomeTeste, int idade)
         {
@@ -86,9 +87,9 @@ namespace Raven.Controller
             string[][] validades = Preparador.ExtrairTabela(dadosPuros, "validity");
 
             // calculando resultado
-            int percentil = Infra.Calculator.CalculateResult(percentis, NoRespostasCorretas, Idade);
+            Percentil = Infra.Calculator.CalculateResult(percentis, NoRespostasCorretas, Idade);
             Validade = ChecarValidade(validades);
-            return $"{percentil}\t{NoRespostasCorretas}\t{Validade}";
+            return $"{Percentil}\t{NoRespostasCorretas}\t{Validade}";
         }
 
         public void RegistrarCronometro()

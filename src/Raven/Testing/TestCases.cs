@@ -22,25 +22,27 @@ namespace Testing
         static void RunWithTest(string tag, int[] test)
         {
             Console.WriteLine($"--- # Testing {tag} test");
-            App = new Aplicador("lil one", "cor", 9);
+            App = new Aplicador("lil one", "cor", 10);
             Stopwatch clock = new Stopwatch();
             App.PrepararTeste();
-            Console.WriteLine("Momento inicial: " + App.MomentoInicial);
-            Console.WriteLine("Respostas dadas:");
+            //Console.WriteLine("Momento inicial: " + App.MomentoInicial);
+            //Console.WriteLine("Respostas dadas:");
             for (var i = 0; i < App.ObterTamanhoDoTeste(); ++i)
             {
                 clock.Start();
                 var resposta = test[i];
-                Console.WriteLine("- " + resposta);
+                //Console.WriteLine("- " + resposta);
                 App.OuvirResposta(i, resposta);
                 clock.Stop();
                 App.OuvirDuracao(i, clock.ElapsedMilliseconds);
                 clock.Reset();
 
             }
-            Console.WriteLine("No Respostas corretas: " + App.NoRespostasCorretas);
             Console.WriteLine("# Assessing results");
             Console.WriteLine($"Resultado calculado:\n\t{App.CalcularResultado()}");
+            Console.WriteLine($"Percentil: {App.Percentil}");
+            Console.WriteLine("No Respostas corretas: " + App.NoRespostasCorretas);
+            Console.WriteLine();
             Console.WriteLine("# Turning stuff functional");
             var rsr = App.RelacionarSeriesERespostas();
             foreach (var key in rsr.Keys)
