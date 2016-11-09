@@ -17,6 +17,7 @@
             {
                 components.Dispose();
             }
+            if (Mother != null) Mother.Show();
             base.Dispose(disposing);
         }
 

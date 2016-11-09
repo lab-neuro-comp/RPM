@@ -6,8 +6,11 @@ namespace Raven.View
 {
     public partial class FormResultado : Form
     {
-        public FormResultado(Aplicador app)
+        private Form Mother { get; set; }
+
+        public FormResultado(Form mother, Aplicador app)
         {
+            Mother = mother;
             /* Não se esqueça de que o os labels de baixo estão invisíveis! */
             app.RegistrarCronometro();
             string resultado = app.CalcularResultado();
@@ -21,13 +24,13 @@ namespace Raven.View
 
         private void btnSair_Click(object sender, EventArgs e)
         {
+            Mother = null;
             Application.Exit();
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
         {
-            FormIntro f1 = new FormIntro();
-            f1.Show();
+            Mother.Show();
             Close();
         }
         

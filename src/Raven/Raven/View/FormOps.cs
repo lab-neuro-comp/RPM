@@ -9,6 +9,7 @@ namespace Raven.View
 {
     public partial class FormOps : Form
     {
+        private FormIntro Mother { get; set; }
         private Aplicador App { get; set; }
         private PictureBox[] Pics { get; set; }
         private Label[] Labels { get; set; }
@@ -16,7 +17,7 @@ namespace Raven.View
         private bool Respondeu { get; set; }
         private int NoRespostas { get; set; }
 
-        public FormOps()
+        public FormOps(FormIntro mother)
         {
             InitializeComponent();
             WindowState = FormWindowState.Maximized;
@@ -40,9 +41,10 @@ namespace Raven.View
             Labels[6] = label7;
             Labels[7] = label8;
             NoRespostas = 6;
+            Mother = mother;
         }
 
-        public FormOps(Aplicador app) : this()
+        public FormOps(FormIntro mother, Aplicador app) : this(mother)
         {
             this.App = app;
         }
@@ -65,7 +67,8 @@ namespace Raven.View
             }
 
             // Terminando o teste
-            FormOutro form = new FormOutro(App);
+            FormOutro form = new FormOutro(Mother, App);
+            Mother = null;
             form.Show();
             Close();
         }

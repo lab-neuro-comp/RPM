@@ -13,19 +13,22 @@ namespace Raven.View
     public partial class FormPre : Form
     {
         private Aplicador App { get; set; }
+        private FormIntro Mother { get; set; }
 
-        public FormPre(Aplicador app)
+        public FormPre(FormIntro mother, Aplicador app)
         {
             InitializeComponent();
             WindowState = FormWindowState.Maximized;
             App = app;
+            Mother = mother;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            FormOps form = new FormOps(App);
+            FormOps form = new FormOps(Mother, App);
             form.Show();
             form.Test();
+            this.Mother = null;
             this.Close();
         }
     }

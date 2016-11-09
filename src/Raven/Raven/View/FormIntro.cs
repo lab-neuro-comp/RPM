@@ -41,7 +41,7 @@ namespace Raven.View
                 return;
             }
 
-            FormPre form = new FormPre(new Aplicador(nome, teste, idade));
+            FormPre form = new FormPre(this, new Aplicador(nome, teste, idade));
             form.Show();
             this.Hide();
         }
