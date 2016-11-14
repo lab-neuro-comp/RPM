@@ -4,6 +4,7 @@ using Raven.Model;
 using System.Linq;
 using Infra;
 using System.Globalization;
+using System.Diagnostics;
 
 namespace Raven.Controller
 {
@@ -23,12 +24,14 @@ namespace Raven.Controller
         public string Validade { get; private set; }
         public int TamanhoDoTeste { get; private set; }
         public int Percentil { get; private set; }
+        public Stopwatch Cronometro { get; private set; }
 
         public Aplicador(string nomeSujeito, string nomeTeste, int idade)
         {
             this.NomeSujeito = nomeSujeito;
             this.NomeTeste = nomeTeste;
             this.Idade = idade;
+            this.Cronometro = new Stopwatch();
         }
 
         public string[] CarregarImagens(int rodada)
@@ -64,18 +67,32 @@ namespace Raven.Controller
             MomentoInicial = DateTime.Now.ToString(new CultureInfo("pt-BR"));
         }
 
+        public string[] Apresentar(int rodada)
+        {
+            // Lidando com cronômetro
+            if (Cronometro.ElapsedMilliseconds > 0)
+            {
+                Cronometro.Reset();
+            }
+            Cronometro.Start();
+
+            // Lidando com a imagem
+            return CarregarImagens(rodada);
+        }
+
         public void OuvirResposta(int rodada, int resposta)
         {
+            // Registrando cronômetro
+            Cronometro.Stop();
+            Tempos.Add(Cronometro.ElapsedMilliseconds);
+
+            // Registrando resposta
             Respostas.Add(resposta);
             if (OpcoesCorretas[rodada] == resposta)
             {
                 NoRespostasCorretas++;
             }
-        }
-
-        public void OuvirDuracao(int rodada, double tempo)
-        {
-            Tempos.Add(tempo);
+            
         }
 
         public string CalcularResultado()

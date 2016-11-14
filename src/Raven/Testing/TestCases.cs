@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Raven.Controller;
-using System.Diagnostics;
 
 namespace Testing
 {
@@ -23,19 +22,15 @@ namespace Testing
         {
             Console.WriteLine($"--- # Testing {tag} test");
             App = new Aplicador("lil one", "cor", 10);
-            Stopwatch clock = new Stopwatch();
             App.PrepararTeste();
             //Console.WriteLine("Momento inicial: " + App.MomentoInicial);
             //Console.WriteLine("Respostas dadas:");
             for (var i = 0; i < App.ObterTamanhoDoTeste(); ++i)
             {
-                clock.Start();
+                App.Apresentar(i);
                 var resposta = test[i];
                 //Console.WriteLine("- " + resposta);
                 App.OuvirResposta(i, resposta);
-                clock.Stop();
-                App.OuvirDuracao(i, clock.ElapsedMilliseconds);
-                clock.Reset();
 
             }
             Console.WriteLine("# Assessing results");

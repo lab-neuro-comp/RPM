@@ -51,19 +51,13 @@ namespace Raven.View
 
         public async void Test()
         {
-            Stopwatch clock = new Stopwatch();
+            App.PrepararTeste();
 
             // Realizando o teste
-            App.PrepararTeste();
             for (NoRodada = 0; NoRodada < this.App.Imagens.Length; NoRodada++)
             {
-                DefinirTela(App.CarregarImagens(NoRodada));
-                clock.Start();
+                DefinirTela(App.Apresentar(NoRodada));
                 await RecebeuResposta();
-                clock.Stop();
-
-                App.OuvirDuracao(NoRodada, clock.ElapsedMilliseconds);
-                clock.Reset();
             }
 
             // Terminando o teste
