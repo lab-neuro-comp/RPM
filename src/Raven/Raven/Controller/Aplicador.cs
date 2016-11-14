@@ -92,7 +92,6 @@ namespace Raven.Controller
             {
                 NoRespostasCorretas++;
             }
-            
         }
 
         public string CalcularResultado()
