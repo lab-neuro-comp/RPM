@@ -26,10 +26,12 @@ let GetSeries (inlet : string[]) : string[] =
     |> Array.map(fun it -> it.Split ' ')
     |> Array.map(fun box -> box.ElementAt 3)
 
+(* Generates a table from a CSV file, separated by comma *)
 let GenerateTableFromCsv (inlet : string[]) : string[][] =
     inlet
     |> Array.map(fun box -> box.Split ',')
 
+(** Gets the maximum allowed result for a valid test *)
 let GetTopResult (table : string[][]) : int = 
     let rec loop i top = 
         if i = table.Length
@@ -38,6 +40,7 @@ let GetTopResult (table : string[][]) : int =
                  if maybe > top then loop (i+1) maybe else loop (i+1) top
     loop 1 0
 
+(* Gets the minimum enabled result for a valid test *)
 let GetFloorResult (table : string[][]) : int = 
     let rec loop i top = 
         if i = table.Length
@@ -46,6 +49,7 @@ let GetFloorResult (table : string[][]) : int =
                  if maybe < top then loop (i+1) maybe else loop (i+1) top
     loop 1 100000
 
+(* Gets the series list from a validity table *)
 let GetSeriesList (table : string[][]) : string[] =
     table.ElementAt 0
     |> Array.filter (fun it -> it.Length > 0)
@@ -63,3 +67,17 @@ let RelateSeriesAndAnswers (series : string[]) (expected : int[]) (collected : i
                     else loop (map.Add(current, 1)) limit (i+1)
     loop Map.empty (series.Length) 0
 
+(* Gets the minimum enabled age for a test *)
+let GetMinimumAge (percentile : string[][]) : int = 
+    percentile.ElementAt(0).ElementAt(1).Split(' ')
+    |> Array.map(fun it -> int(it))
+    |> Array.min
+
+(* Gets the maximum enabled age for a test *)
+let GetMaximumAge (percentile : string[][]) : int = 
+    percentile.ElementAt(0)
+    |> Array.filter(fun it -> it.Length > 0)
+    |> Array.map(fun it -> it.Split(' ')
+                           |> Array.map(fun that -> int(that))
+                           |> Array.max )
+    |> Array.max

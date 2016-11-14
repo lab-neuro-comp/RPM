@@ -21,7 +21,7 @@ namespace Testing
         static void RunWithTest(string tag, int[] test)
         {
             Console.WriteLine($"--- # Testing {tag} test");
-            App = new Aplicador("lil one", "cor", 4);
+            App = new Aplicador("lil one", "cor", 10);
             App.PrepararTeste();
             Console.WriteLine($"Nome: {App.NomeSujeito}");
             Console.WriteLine($"Idade: {App.Idade}");

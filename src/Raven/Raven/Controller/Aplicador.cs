@@ -159,8 +159,8 @@ namespace Raven.Controller
             Dictionary<string, int> respostasPorSerie = new Dictionary<string, int>();
             int notaMaxima = Infra.ParamExtractor.GetTopResult(validadesPuras);
             int notaMinima = Infra.ParamExtractor.GetFloorResult(validadesPuras);
-            int idadeMinima = 1;
-            int idadeMaxima = 100;
+            int idadeMinima = Infra.ParamExtractor.GetMinimumAge(percentisPuros);
+            int idadeMaxima = Infra.ParamExtractor.GetMaximumAge(percentisPuros); ;
             string saida = "INVÁLIDO";
 
             // Checando caso base
@@ -168,7 +168,7 @@ namespace Raven.Controller
                 return saida;
 
             // TODO Extrair idades mínima e máxima
-            if ((Idade < idadeMinima) && (Idade > idadeMinima))
+            if ((Idade < idadeMinima) || (Idade > idadeMaxima))
                 return "IDADE INVÁLIDA";
 
             // Construindo respostas por série
