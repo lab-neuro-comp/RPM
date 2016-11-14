@@ -139,7 +139,7 @@ namespace Raven.Controller
         /// <summary>
         /// Confere se a execução de um teste foi válida ou não
         /// </summary>
-        /// <returns>"VÁLIDO" se a execução foi válida; "INVÁLIDO" caso contrário</returns>
+        /// <returns>"VÁLIDO" se a execução foi válida; "INVÁLIDO" ou "IDADE INVÁLIDA" caso contrário</returns>
         private string ChecarValidade(string[][] validadesPuras, string[][] percentisPuros)
         {
             /*
@@ -160,7 +160,7 @@ namespace Raven.Controller
             int notaMaxima = Infra.ParamExtractor.GetTopResult(validadesPuras);
             int notaMinima = Infra.ParamExtractor.GetFloorResult(validadesPuras);
             int idadeMinima = Infra.ParamExtractor.GetMinimumAge(percentisPuros);
-            int idadeMaxima = Infra.ParamExtractor.GetMaximumAge(percentisPuros); ;
+            int idadeMaxima = Infra.ParamExtractor.GetMaximumAge(percentisPuros);
             string saida = "INVÁLIDO";
 
             // Checando caso base

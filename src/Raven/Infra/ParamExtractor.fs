@@ -33,21 +33,19 @@ let GenerateTableFromCsv (inlet : string[]) : string[][] =
 
 (** Gets the maximum allowed result for a valid test *)
 let GetTopResult (table : string[][]) : int = 
-    let rec loop i top = 
-        if i = table.Length
-            then top
-            else let maybe = int(table.ElementAt(i).ElementAt(0))
-                 if maybe > top then loop (i+1) maybe else loop (i+1) top
-    loop 1 0
+    table
+    |> Array.map (fun it -> it.ElementAt 0)
+    |> Array.filter (fun it -> it.Length > 0)
+    |> Array.map int
+    |> Array.max
 
 (* Gets the minimum enabled result for a valid test *)
-let GetFloorResult (table : string[][]) : int = 
-    let rec loop i top = 
-        if i = table.Length
-            then top
-            else let maybe = int(table.ElementAt(i).ElementAt(0))
-                 if maybe < top then loop (i+1) maybe else loop (i+1) top
-    loop 1 100000
+let GetFloorResult (table : string[][]) : int =
+    table
+    |> Array.map (fun it -> it.ElementAt 0)
+    |> Array.filter (fun it -> it.Length > 0)
+    |> Array.map int
+    |> Array.min
 
 (* Gets the series list from a validity table *)
 let GetSeriesList (table : string[][]) : string[] =
@@ -56,16 +54,17 @@ let GetSeriesList (table : string[][]) : string[] =
 
 (* Relates the series to the given answers *)
 let RelateSeriesAndAnswers (series : string[]) (expected : int[]) (collected : int[]) : Map<string, int> =
-    let rec loop (map : Map<string, int>) limit i =
+    let limit = series.Length
+    let rec loop (map : Map<string, int>) i =
         if i = limit
             then map
             else let current = series.ElementAt i
                  if map.ContainsKey current
                     then let correct = ((expected.ElementAt i) = (collected.ElementAt i))
                          let counting = map.[current] + if correct then 1 else 0
-                         loop (map.Add(current, counting)) limit (i+1)
-                    else loop (map.Add(current, 1)) limit (i+1)
-    loop Map.empty (series.Length) 0
+                         loop (map.Add(current, counting)) (i+1)
+                    else loop (map.Add(current, 1)) (i+1)
+    loop Map.empty 0
 
 (* Gets the minimum enabled age for a test *)
 let GetMinimumAge (percentile : string[][]) : int = 
