@@ -12,3 +12,10 @@ C:\Users\cris\Documents\work\Lab\RPM\src\Raven\Infra\bin\Debug\FSharp.Core.dll
 C:\Users\cris\Documents\work\Lab\RPM\src\Raven\Infra\bin\Debug\FSharp.Core.xml
 C:\Users\cris\Documents\work\Lab\RPM\src\Raven\Infra\obj\Debug\Infra.dll
 C:\Users\cris\Documents\work\Lab\RPM\src\Raven\Infra\obj\Debug\Infra.pdb
+C:\Users\neuro\Documents\Lab\src\github.com\lab-neuro-comp\RPM\src\Raven\Infra\bin\Debug\Infra.XML
+C:\Users\neuro\Documents\Lab\src\github.com\lab-neuro-comp\RPM\src\Raven\Infra\bin\Debug\Infra.dll
+C:\Users\neuro\Documents\Lab\src\github.com\lab-neuro-comp\RPM\src\Raven\Infra\bin\Debug\Infra.pdb
+C:\Users\neuro\Documents\Lab\src\github.com\lab-neuro-comp\RPM\src\Raven\Infra\bin\Debug\FSharp.Core.dll
+C:\Users\neuro\Documents\Lab\src\github.com\lab-neuro-comp\RPM\src\Raven\Infra\bin\Debug\FSharp.Core.xml
+C:\Users\neuro\Documents\Lab\src\github.com\lab-neuro-comp\RPM\src\Raven\Infra\obj\Debug\Infra.dll
+C:\Users\neuro\Documents\Lab\src\github.com\lab-neuro-comp\RPM\src\Raven\Infra\obj\Debug\Infra.pdb

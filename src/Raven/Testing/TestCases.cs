@@ -21,8 +21,10 @@ namespace Testing
         static void RunWithTest(string tag, int[] test)
         {
             Console.WriteLine($"--- # Testing {tag} test");
-            App = new Aplicador("lil one", "cor", 10);
+            App = new Aplicador("lil one", "cor", 4);
             App.PrepararTeste();
+            Console.WriteLine($"Nome: {App.NomeSujeito}");
+            Console.WriteLine($"Idade: {App.Idade}");
             //Console.WriteLine("Momento inicial: " + App.MomentoInicial);
             //Console.WriteLine("Respostas dadas:");
             for (var i = 0; i < App.ObterTamanhoDoTeste(); ++i)
@@ -34,16 +36,16 @@ namespace Testing
 
             }
             Console.WriteLine("# Assessing results");
-            Console.WriteLine($"Resultado calculado:\n\t{App.CalcularResultado()}");
+            Console.WriteLine($"Resultado calculado: {App.CalcularResultado()}");
             Console.WriteLine($"Percentil: {App.Percentil}");
             Console.WriteLine("No Respostas corretas: " + App.NoRespostasCorretas);
             Console.WriteLine();
-            Console.WriteLine("# Turning stuff functional");
-            var rsr = App.RelacionarSeriesERespostas();
-            foreach (var key in rsr.Keys)
-            {
-                Console.WriteLine($"{key}: {rsr[key]}");
-            }
+            //Console.WriteLine("# Turning stuff functional");
+            //var rsr = App.RelacionarSeriesERespostas();
+            //foreach (var key in rsr.Keys)
+            //{
+            //    Console.WriteLine($"{key}: {rsr[key]}");
+            //}
         }
 
         static int[] GenerateAnswersForColorful()

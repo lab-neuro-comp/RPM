@@ -105,7 +105,7 @@ namespace Raven.Controller
 
             // calculando resultado
             Percentil = Infra.Calculator.CalculateResult(percentis, NoRespostasCorretas, Idade);
-            Validade = ChecarValidade(validades);
+            Validade = ChecarValidade(validades, percentis);
             return $"{Percentil}\t{NoRespostasCorretas}\t{Validade}";
         }
 
@@ -116,7 +116,8 @@ namespace Raven.Controller
             var resultado = this.CalcularResultado().Split('\t');
 
             CamadaAcessoDados.Salvar(CamadaAcessoDados.GerarResultado(NomeSujeito), 
-                                     Infra.Formatter.Format(resultado[0],
+                                     Infra.Formatter.Format(Idade, 
+                                                            resultado[0],
                                                             resultado[1],
                                                             MomentoInicial,
                                                             OpcoesCorretas.Select((it) => it.ToString())
@@ -139,7 +140,7 @@ namespace Raven.Controller
         /// Confere se a execução de um teste foi válida ou não
         /// </summary>
         /// <returns>"VÁLIDO" se a execução foi válida; "INVÁLIDO" caso contrário</returns>
-        private string ChecarValidade(string[][] validadesPuras)
+        private string ChecarValidade(string[][] validadesPuras, string[][] percentisPuros)
         {
             /*
             # Input
@@ -158,23 +159,19 @@ namespace Raven.Controller
             Dictionary<string, int> respostasPorSerie = new Dictionary<string, int>();
             int notaMaxima = Infra.ParamExtractor.GetTopResult(validadesPuras);
             int notaMinima = Infra.ParamExtractor.GetFloorResult(validadesPuras);
+            int idadeMinima = 1;
+            int idadeMaxima = 100;
             string saida = "INVÁLIDO";
 
             // Checando caso base
             if ((NoRespostasCorretas < notaMinima) || (NoRespostasCorretas > notaMaxima))
                 return saida;
 
-            // Construindo respostas por série
-            //ObterTamanhoDoTeste();
-            //for (int i = 0; i < TamanhoDoTeste; ++i)
-            //{
-            //    var serie = Series[i];
-            //    var contagem = 0;
-            //    var correto = (Respostas.ElementAt(i) == OpcoesCorretas[i]);
+            // TODO Extrair idades mínima e máxima
+            if ((Idade < idadeMinima) && (Idade > idadeMinima))
+                return "IDADE INVÁLIDA";
 
-            //    respostasPorSerie.TryGetValue(serie, out contagem);
-            //    respostasPorSerie[serie] = contagem + ((correto) ? 1 : 0);
-            //}
+            // Construindo respostas por série
             respostasPorSerie = RelacionarSeriesERespostas();
 
             // Construindo respostas esperadas
@@ -184,11 +181,11 @@ namespace Raven.Controller
             var valido = true;
             for (int j = 0; (j < series.Count()) && valido; ++j)
             {
-                var esperado = -1;
+                var esperado = -10;
                 var coletado = respostasPorSerie[series.ElementAt(j)];
                 int.TryParse(validades[j+1], out esperado);
                 if (esperado < 0) throw new Exception();
-                valido = Math.Abs(coletado - esperado) <= 2;
+                valido &= (Math.Abs(coletado - esperado) <= 2);
             }
             saida = (valido) ? "VÁLIDO" : "INVÁLIDO";
 
