@@ -4,23 +4,27 @@ open System
 open System.Linq
 open System.Collections.Generic
 
+(* Gets the image key for each question *)
 let GetImages (inlet : string[]) : string[] =
     inlet
     |> Array.map(fun it -> it.Split ' ')
     |> Array.map(fun box -> box.ElementAt 0)
 
+(* Gets the number of available options for each question *)
 let GetNoOptions (inlet : string[]) : int[] =
     inlet
     |> Array.map(fun it -> it.Split ' ')
     |> Array.map(fun box -> box.ElementAt 1)
     |> Array.map(fun it -> int it)
 
+(* Gets the correct options for each question *)
 let GetCorrectOptions (inlet : string[]) : int[] =
     inlet
     |> Array.map(fun it -> it.Split ' ')
     |> Array.map(fun box -> box.ElementAt 2)
     |> Array.map(fun it -> int it)
 
+(* Gets the series of each question *)
 let GetSeries (inlet : string[]) : string[] = 
     inlet
     |> Array.map(fun it -> it.Split ' ')
@@ -69,14 +73,14 @@ let RelateSeriesAndAnswers (series : string[]) (expected : int[]) (collected : i
 (* Gets the minimum enabled age for a test *)
 let GetMinimumAge (percentile : string[][]) : int = 
     percentile.ElementAt(0).ElementAt(1).Split(' ')
-    |> Array.map(fun it -> int(it))
+    |> Array.map (fun it -> int(it))
     |> Array.min
 
 (* Gets the maximum enabled age for a test *)
 let GetMaximumAge (percentile : string[][]) : int = 
     percentile.ElementAt(0)
-    |> Array.filter(fun it -> it.Length > 0)
-    |> Array.map(fun it -> it.Split(' ')
-                           |> Array.map(fun that -> int(that))
-                           |> Array.max )
+    |> Array.filter (fun it -> it.Length > 0)
+    |> Array.map (fun it -> it.Split(' ')
+                            |> Array.map(fun that -> int(that))
+                            |> Array.max )
     |> Array.max

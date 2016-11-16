@@ -34,17 +34,27 @@ namespace Raven.Controller
             this.Cronometro = new Stopwatch();
         }
 
+        /// <summary>
+        /// Carrega as imagens da rodada fornecida.
+        /// </summary>
         public string[] CarregarImagens(int rodada)
         {
             return CamadaAcessoDados.CarregarImagens(NomeTeste, Imagens[rodada], NoOpcoes[rodada]);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public int ObterTamanhoDoTeste()
         {
             this.TamanhoDoTeste = this.Imagens.Length;
             return TamanhoDoTeste;
         }
 
+        /// <summary>
+        /// Carrega as informações necessárias para a execução do teste.
+        /// </summary>
         public void PrepararTeste()
         {
             // Preparando resultados do teste
@@ -67,6 +77,11 @@ namespace Raven.Controller
             MomentoInicial = DateTime.Now.ToString(new CultureInfo("pt-BR"));
         }
 
+        /// <summary>
+        /// Mostra os dados relacionados à rodada atual.
+        /// </summary>
+        /// <param name="rodada"></param>
+        /// <returns>As imagens que deverão ser apresentadas nesta rodada.</returns>
         public string[] Apresentar(int rodada)
         {
             // Lidando com cronômetro
@@ -80,6 +95,12 @@ namespace Raven.Controller
             return CarregarImagens(rodada);
         }
 
+        /// <summary>
+        /// Adiciona a resposta da rodada dada.
+        /// </summary>
+        /// <param name="rodada">Número da rodada atual, 0 indexado.</param>
+        /// <param name="resposta">A resposta dada pelo sujeito. Este método 
+        /// não checa se esse valor é válido.</param>
         public void OuvirResposta(int rodada, int resposta)
         {
             // Registrando cronômetro
@@ -94,6 +115,11 @@ namespace Raven.Controller
             }
         }
 
+        /// <summary>
+        /// Calcula o resultado da execução de um teste completo.
+        /// </summary>
+        /// <returns>Uma string com 3 campos delimitados por tabulação: percentil,
+        /// número de respostas corretas e validade do teste, respectivamente.</returns>
         public string CalcularResultado()
         {
             // preparando dados para cálculo
