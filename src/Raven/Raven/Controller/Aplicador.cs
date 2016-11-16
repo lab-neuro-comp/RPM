@@ -134,6 +134,9 @@ namespace Raven.Controller
             return $"{Percentil}\t{NoRespostasCorretas}\t{Validade}";
         }
 
+        /// <summary>
+        /// Salva na memória a perfomance obtida pelo sujeito.
+        /// </summary>
         public void RegistrarCronometro()
         {
             var tempos = Tempos.Select((it) => it.ToString())
@@ -167,20 +170,6 @@ namespace Raven.Controller
         /// <returns>"VÁLIDO" se a execução foi válida; "INVÁLIDO" ou "IDADE INVÁLIDA" caso contrário</returns>
         private string ChecarValidade(string[][] validadesPuras, string[][] percentisPuros)
         {
-            /*
-            # Input
-            + Test description, relating questions to series
-            + Validity table, relating # of correct answers and expected results in each series
-            + List of answers given by the subject
-
-            # Midput
-            + Map relating the series and the # of correct answers given by the subject
-            + Map relating the series and the expected # of correct answers as prescribed by the subject's # of correct answers
-
-            # Output
-            + Test validity
-            */
-
             Dictionary<string, int> respostasPorSerie = new Dictionary<string, int>();
             int notaMaxima = Infra.ParamExtractor.GetTopResult(validadesPuras);
             int notaMinima = Infra.ParamExtractor.GetFloorResult(validadesPuras);
@@ -191,13 +180,14 @@ namespace Raven.Controller
             // Checando caso base
             if ((NoRespostasCorretas < notaMinima) || (NoRespostasCorretas > notaMaxima))
                 return saida;
-
-            // TODO Extrair idades mínima e máxima
             if ((Idade < idadeMinima) || (Idade > idadeMaxima))
                 return "IDADE INVÁLIDA";
 
             // Construindo respostas por série
-            respostasPorSerie = RelacionarSeriesERespostas();
+            var temp = Infra.ParamExtractor.RelateSeriesAndAnswers(Series,
+                                                                   OpcoesCorretas,
+                                                                   Respostas.ToArray());
+            respostasPorSerie = new Dictionary<string, int>(temp);
 
             // Construindo respostas esperadas
             var series = Infra.ParamExtractor.GetSeriesList(validadesPuras);

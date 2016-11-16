@@ -81,6 +81,6 @@ let GetMaximumAge (percentile : string[][]) : int =
     percentile.ElementAt(0)
     |> Array.filter (fun it -> it.Length > 0)
     |> Array.map (fun it -> it.Split(' ')
-                            |> Array.map(fun that -> int(that))
+                            |> Array.map (fun that -> int(that))
                             |> Array.max )
     |> Array.max
