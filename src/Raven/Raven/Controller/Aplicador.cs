@@ -129,8 +129,12 @@ namespace Raven.Controller
             string[][] validades = Preparador.ExtrairTabela(dadosPuros, "validity");
 
             // calculando resultado
-            Percentil = Infra.Calculator.CalculateResult(percentis, NoRespostasCorretas, Idade);
             Validade = ChecarValidade(validades, percentis);
+            if (Validade == "VÁLIDO")
+            {
+                Percentil = Infra.Calculator.CalculateResult(percentis, NoRespostasCorretas, Idade);
+            }
+            
             return $"{Percentil}\t{NoRespostasCorretas}\t{Validade}";
         }
 

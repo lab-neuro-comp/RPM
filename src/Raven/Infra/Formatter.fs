@@ -14,7 +14,7 @@ let Format (A: int) (P: string) (C: string) (S: string) (XS: string[]) (AS: stri
     // v: validity
     let limit = Array.length AS
     let build i =
-        String.Format("{0};{1};{2};{3};{4};{5};{6};{7}", 
+        String.Format("{0};{1};{2};{3};{4};{5};{6};{7};", 
                       A, S, C, P, (XS.ElementAt i), (AS.ElementAt i), (TS.ElementAt i), V)
     let rec loop box i =
         if i < limit
