@@ -2,23 +2,38 @@
 module Infra.Formatter
 open System
 open System.Linq
+open System.Collections.Generic
 
-let Format (A: int) (P: string) (C: string) (S: string) (XS: string[]) (AS: string[]) (TS: string[]) (V: string): string[] =
+let Format (title: string) (stuff: Dictionary<string, string[]>) (limit: int): string[] =
+    // n: Name
     // a: Age
+    // s: Initial moment
     // p: Percentile
     // c: Correct Answers
-    // s: Initial moment
+    // i: Incorrect answers
     // x: Expected answers
     // a: Answers
     // T: Times
     // v: validity
-    let limit = Array.length AS
-    let build i =
-        String.Format("{0};{1};{2};{3};{4};{5};{6};{7};", 
-                      A, S, C, P, (XS.ElementAt i), (AS.ElementAt i), (TS.ElementAt i), V)
-    let rec loop box i =
+    let inlet = [|
+        stuff.["name"]
+        stuff.["age"]
+        stuff.["initial"]
+        stuff.["percentile"]
+        stuff.["correct"]
+        stuff.["incorrect"]
+        stuff.["expected"]
+        stuff.["answers"]
+        stuff.["times"]
+        stuff.["validity"]
+    |]
+    let build (i: int): string = 
+        inlet
+        |> Array.map(fun it -> it.ElementAt i)
+        |> Array.reduce(fun box -> (fun it -> String.Format("{0};{1}", box, it)))
+    let rec loop (box: string[]) (i: int): string[] =
         if i < limit
             then loop (Array.append box [|(build i)|]) (i+1)
             else box
-    let start = [|"Idade;Começo;# Respostas Corretas;Percentil;Resposta Esperada;Resposta Dada;Tempo;Validez"|]
+    let start = [|title|]
     loop start 0

@@ -143,21 +143,48 @@ namespace Raven.Controller
         /// </summary>
         public void RegistrarCronometro()
         {
-            var tempos = Tempos.Select((it) => it.ToString())
-                               .ToArray();
+            // Preparando variáveis auxiliares
+            var tempos = Tempos.Select((it) => it.ToString()).ToArray();
             var resultado = this.CalcularResultado().Split('\t');
 
+            // Construindo colunas com itens repetidos
+            var dados = new Dictionary<string, string[]>();
+            int limite = OpcoesCorretas.Length;
+            var name = new string[limite];
+            var age = new string[limite];
+            var initial = new string[limite];
+            var percentile = new string[limite];
+            var correct = new string[limite];
+            var incorrect = new string[limite];
+            var validity = new string[limite];
+
+            for (int i = 0; i < limite; ++i)
+            {
+                name[i] = NomeSujeito;
+                age[i] = Idade.ToString();
+                percentile[i] = Percentil.ToString();
+                correct[i] = NoRespostasCorretas.ToString();
+                incorrect[i] = (Respostas.Count - NoRespostasCorretas).ToString();
+                validity[i] = Validade;
+                initial[i] = MomentoInicial;
+            }
+            
+            // Preparando colunas
+            dados["name"] = name;
+            dados["age"] = age;
+            dados["initial"] = initial;
+            dados["percentile"] = percentile;
+            dados["correct"] = correct;
+            dados["incorrect"] = incorrect;
+            dados["expected"] = OpcoesCorretas.Select((it) => it.ToString()).ToArray();
+            dados["answers"] = Respostas.Select((it) => it.ToString()).ToArray();
+            dados["times"] = tempos;
+            dados["validity"] = validity;
+
+            // Salvando dados na memória
+            string titulo = "Nome;Idade;Momento Inicial;Percentil;# Respostas Corretas;# Respostas Incorretas;Resposta esperada;Resposta dada;Tempos;Validez";
             CamadaAcessoDados.Salvar(CamadaAcessoDados.GerarResultado(NomeSujeito), 
-                                     Infra.Formatter.Format(Idade, 
-                                                            resultado[0],
-                                                            resultado[1],
-                                                            MomentoInicial,
-                                                            OpcoesCorretas.Select((it) => it.ToString())
-                                                                          .ToArray(),
-                                                            Respostas.Select((it) => it.ToString())
-                                                                     .ToArray(),
-                                                            tempos,
-                                                            Validade));
+                                     Infra.Formatter.Format(titulo, dados, limite));
         }
 
         public Dictionary<string, int> RelacionarSeriesERespostas()
