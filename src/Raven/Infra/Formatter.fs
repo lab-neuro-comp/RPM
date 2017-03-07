@@ -4,7 +4,7 @@ open System
 open System.Linq
 open System.Collections.Generic
 
-let Format (title: string) (stuff: Dictionary<string, string[]>) (limit: int): string[] =
+let Format (title: string) (stuff: Dictionary<string, string[]>): string[] =
     // n: Name
     // a: Age
     // s: Initial moment
@@ -27,6 +27,10 @@ let Format (title: string) (stuff: Dictionary<string, string[]>) (limit: int): s
         stuff.["times"]
         stuff.["validity"]
     |]
+    let limit = 
+        inlet
+        |> Array.map(fun it -> it.Length)
+        |> Array.min
     let build (i: int): string = 
         inlet
         |> Array.map(fun it -> it.ElementAt i)

@@ -183,15 +183,12 @@ namespace Raven.Controller
 
             // Salvando dados na memória
             string titulo = "Nome;Idade;Momento Inicial;Percentil;# Respostas Corretas;# Respostas Incorretas;Resposta esperada;Resposta dada;Tempos;Validez";
-            CamadaAcessoDados.Salvar(CamadaAcessoDados.GerarResultado(NomeSujeito), 
-                                     Infra.Formatter.Format(titulo, dados, limite));
+            CamadaAcessoDados.Salvar(CamadaAcessoDados.GerarResultado(NomeSujeito), Infra.Formatter.Format(titulo, dados));
         }
 
         public Dictionary<string, int> RelacionarSeriesERespostas()
         {
-            var x = Infra.ParamExtractor.RelateSeriesAndAnswers(Series,
-                                                                OpcoesCorretas,
-                                                                Respostas.ToArray());
+            var x = Infra.ParamExtractor.RelateSeriesAndAnswers(Series, OpcoesCorretas, Respostas.ToArray());
             return new Dictionary<string, int>(x);
         }
 
