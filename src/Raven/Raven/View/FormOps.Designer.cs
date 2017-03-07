@@ -347,12 +347,12 @@
             }
             
             // Adding components to window
-            for (int i = 0; i < noColunas; ++i)
+            for (int i = 0; i < 2; ++i)
             {
-                for (int j = 0; j < 2; ++j, ++current)
+                for (int j = 0; j < noColunas; ++j, ++current)
                 {
-                    tableOptions.Controls.Add(Pics[current], i, 1 + 2*j);
-                    tableOptions.Controls.Add(Labels[current], i, 2*j);
+                    tableOptions.Controls.Add(Pics[current], j, 1 + 2*i);
+                    tableOptions.Controls.Add(Labels[current], j, 2*i);
                 }
             }
         }
