@@ -122,14 +122,16 @@ namespace Raven.Controller
         /// número de respostas corretas e validade do teste, respectivamente.</returns>
         public string CalcularResultado()
         {
-            // preparando dados para cálculo
             string arquivoPadrao = CamadaAcessoDados.GerarPadraoPeloTeste(NomeTeste);
             string dadosPuros = CamadaAcessoDados.Tudo(arquivoPadrao);
             string[][] percentis = Preparador.ExtrairTabela(dadosPuros, "percentile");
             string[][] validades = Preparador.ExtrairTabela(dadosPuros, "validity");
+            var relacaoValidades = ChecarValidade(validades, percentis);
+             
+            Validade = (relacaoValidades.ContainsValue("INVÁLIDO") || relacaoValidades.Count == 0)?
+                "INVÁLIDO" :
+                "VÁLIDO";
 
-            // calculando resultado
-            Validade = (ChecarValidade(validades, percentis).ContainsValue("INVÁLIDO"))? "INVÁLIDO" : "VÁLIDO";
             if (Validade == "VÁLIDO")
             {
                 Percentil = Infra.Calculator.CalculateResult(percentis, NoRespostasCorretas, Idade);
@@ -148,12 +150,6 @@ namespace Raven.Controller
             CamadaAcessoDados.Salvar(CamadaAcessoDados.GerarResultado(NomeSujeito), linhasTabela);
         }
 
-        public Dictionary<string, int> RelacionarSeriesERespostas()
-        {
-            var x = Infra.ParamExtractor.RelateSeriesAndAnswers(Series, OpcoesCorretas, Respostas.ToArray());
-            return new Dictionary<string, int>(x);
-        }
-
         /// <summary>
         /// Confere se a execução de um teste foi válida ou não
         /// </summary>
@@ -162,17 +158,17 @@ namespace Raven.Controller
         public Dictionary<string, string> ChecarValidade(string[][] validadesPuras, string[][] percentisPuros)
         {
             Dictionary<string, string> saida = new Dictionary<string, string>();
-
-            // Extraindo o esperado de cada série baseado nas varíaveis NoRespostasCorretas e validadesPuras
             var esperado = new Dictionary<string, int>(Infra.ParamExtractor.GetExpectedForEachSeries(validadesPuras, NoRespostasCorretas));
-            // Calculando o resultado de cada série para as respostas dadas
-            var respostasCorretas = Respostas.Zip(OpcoesCorretas, (given, expected) => given == expected);
-            var coletado = new Dictionary<string, int>(Infra.Calculator.RelateSeriesAndAnswers(Series, respostasCorretas.ToArray()));
+            var coletado = new Dictionary<string, int>(Infra.Calculator.RelateSeriesAndAnswers(Series,
+                                                                                               Respostas.Zip(OpcoesCorretas, (given, expected) => given == expected)
+                                                                                                        .ToArray()));
 
-            // Relacionando os resultados por série
+            // TODO Levar idade em consideração
+
             foreach (var serie in esperado.Keys.ToArray())
             {
                 int discrepancia = Math.Abs(esperado[serie] - coletado[serie]);
+                Console.WriteLine($"APLICADOR: |{esperado[serie]} - {coletado[serie]}| = {discrepancia}");
                 saida[serie] = (discrepancia <= 2) ? "VÁLIDO" : "INVÁLIDO";
             }
 
