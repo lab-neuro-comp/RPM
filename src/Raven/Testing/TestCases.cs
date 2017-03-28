@@ -21,7 +21,7 @@ namespace Testing
         static void RunWithTest(string tag, int[] test)
         {
             Console.WriteLine($"--- # Testing {tag} test");
-            App = new Aplicador("lil one", "cor", 10);
+            App = new Aplicador($"lil {tag} one", "cor", 10);
             App.PrepararTeste();
             Console.WriteLine($"Nome: {App.NomeSujeito}");
             Console.WriteLine($"Idade: {App.Idade}");
@@ -40,6 +40,7 @@ namespace Testing
             Console.WriteLine($"Percentil: {App.Percentil}");
             Console.WriteLine("No Respostas corretas: " + App.NoRespostasCorretas);
             Console.WriteLine();
+            App.RegistrarCronometro();
             //Console.WriteLine("# Turning stuff functional");
             //var rsr = App.RelacionarSeriesERespostas();
             //foreach (var key in rsr.Keys)

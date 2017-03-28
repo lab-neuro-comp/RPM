@@ -36,3 +36,20 @@ let CalculateResult (table : string[][]) (score : int) (age : int) : int =
     if column >= 0
         then getPercentile table score column
         else 1
+
+let RelateSeriesAndAnswers (series : string[]) (answers : bool[]) : Map<string, int> =
+    let limit = series.Length
+    let isCorrect i =
+        if answers.[i]
+            then 1
+            else 0
+    let rec loop (map : Map<string, int>) i =
+        if i < limit
+            then if map.ContainsKey series.[i]
+                    then loop (map.Add(series.[i], 
+                                      (map.[series.[i]] + (isCorrect i))))
+                              (i+1)
+                    else loop (map.Add(series.[i], (isCorrect i)))
+                              (i+1)
+            else map
+    loop Map.empty 0

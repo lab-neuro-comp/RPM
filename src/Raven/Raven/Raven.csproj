@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\Aplicador.cs" />
+    <Compile Include="Model\Formatador.cs" />
     <Compile Include="Model\CamadaAcessoDados.cs" />
     <Compile Include="View\FormOutro.cs">
       <SubType>Form</SubType>

@@ -16,8 +16,8 @@ namespace Raven.Controller
         public string MomentoInicial { get; private set; }
         public string[] Imagens { get; private set; }
         public int NoRespostasCorretas { get; private set; }
-        private List<double> Tempos { get; set; }
-        private List<int> Respostas { get; set; }
+        public List<double> Tempos { get; private set; }
+        public List<int> Respostas { get; private set; }
         public int[] NoOpcoes { get; private set; }
         public int[] OpcoesCorretas { get; private set; }
         public string[] Series { get; private set; }
@@ -129,7 +129,7 @@ namespace Raven.Controller
             string[][] validades = Preparador.ExtrairTabela(dadosPuros, "validity");
 
             // calculando resultado
-            Validade = ChecarValidade(validades, percentis);
+            Validade = (ChecarValidade(validades, percentis).ContainsValue("INVÁLIDO"))? "INVÁLIDO" : "VÁLIDO";
             if (Validade == "VÁLIDO")
             {
                 Percentil = Infra.Calculator.CalculateResult(percentis, NoRespostasCorretas, Idade);
@@ -143,47 +143,9 @@ namespace Raven.Controller
         /// </summary>
         public void RegistrarCronometro()
         {
-            // Preparando variáveis auxiliares
-            var tempos = Tempos.Select((it) => it.ToString()).ToArray();
-            var resultado = this.CalcularResultado().Split('\t');
-
-            // Construindo colunas com itens repetidos
-            var dados = new Dictionary<string, string[]>();
-            int limite = OpcoesCorretas.Length;
-            var name = new string[limite];
-            var age = new string[limite];
-            var initial = new string[limite];
-            var percentile = new string[limite];
-            var correct = new string[limite];
-            var incorrect = new string[limite];
-            var validity = new string[limite];
-
-            for (int i = 0; i < limite; ++i)
-            {
-                name[i] = NomeSujeito;
-                age[i] = Idade.ToString();
-                percentile[i] = Percentil.ToString();
-                correct[i] = NoRespostasCorretas.ToString();
-                incorrect[i] = (Respostas.Count - NoRespostasCorretas).ToString();
-                validity[i] = Validade;
-                initial[i] = MomentoInicial;
-            }
-            
-            // Preparando colunas
-            dados["name"] = name;
-            dados["age"] = age;
-            dados["initial"] = initial;
-            dados["percentile"] = percentile;
-            dados["correct"] = correct;
-            dados["incorrect"] = incorrect;
-            dados["expected"] = OpcoesCorretas.Select((it) => it.ToString()).ToArray();
-            dados["answers"] = Respostas.Select((it) => it.ToString()).ToArray();
-            dados["times"] = tempos;
-            dados["validity"] = validity;
-
-            // Salvando dados na memória
-            string titulo = "Nome;Idade;Momento Inicial;Percentil;# Respostas Corretas;# Respostas Incorretas;Resposta esperada;Resposta dada;Tempos;Validez";
-            CamadaAcessoDados.Salvar(CamadaAcessoDados.GerarResultado(NomeSujeito), Infra.Formatter.Format(titulo, dados));
+            // TODO Atualizar o formatador para incluir a validade de cada série
+            string[] linhasTabela = Formatador.GerarTabela(this);
+            CamadaAcessoDados.Salvar(CamadaAcessoDados.GerarResultado(NomeSujeito), linhasTabela);
         }
 
         public Dictionary<string, int> RelacionarSeriesERespostas()
@@ -195,42 +157,24 @@ namespace Raven.Controller
         /// <summary>
         /// Confere se a execução de um teste foi válida ou não
         /// </summary>
-        /// <returns>"VÁLIDO" se a execução foi válida; "INVÁLIDO" ou "IDADE INVÁLIDA" caso contrário</returns>
-        private string ChecarValidade(string[][] validadesPuras, string[][] percentisPuros)
+        /// <returns>Para cada tag que identifica a série, é relacionado a string "VÁLIDO" se 
+        /// a execução foi válida; "INVÁLIDO" ou "IDADE INVÁLIDA" caso contrário</returns>
+        public Dictionary<string, string> ChecarValidade(string[][] validadesPuras, string[][] percentisPuros)
         {
-            Dictionary<string, int> respostasPorSerie = new Dictionary<string, int>();
-            int notaMaxima = Infra.ParamExtractor.GetTopResult(validadesPuras);
-            int notaMinima = Infra.ParamExtractor.GetFloorResult(validadesPuras);
-            int idadeMinima = Infra.ParamExtractor.GetMinimumAge(percentisPuros);
-            int idadeMaxima = Infra.ParamExtractor.GetMaximumAge(percentisPuros);
-            string saida = "INVÁLIDO";
+            Dictionary<string, string> saida = new Dictionary<string, string>();
 
-            // Checando caso base
-            if ((NoRespostasCorretas < notaMinima) || (NoRespostasCorretas > notaMaxima))
-                return saida;
-            if ((Idade < idadeMinima) || (Idade > idadeMaxima))
-                return "IDADE INVÁLIDA";
+            // Extraindo o esperado de cada série baseado nas varíaveis NoRespostasCorretas e validadesPuras
+            var esperado = new Dictionary<string, int>(Infra.ParamExtractor.GetExpectedForEachSeries(validadesPuras, NoRespostasCorretas));
+            // Calculando o resultado de cada série para as respostas dadas
+            var respostasCorretas = Respostas.Zip(OpcoesCorretas, (given, expected) => given == expected);
+            var coletado = new Dictionary<string, int>(Infra.Calculator.RelateSeriesAndAnswers(Series, respostasCorretas.ToArray()));
 
-            // Construindo respostas por série
-            var temp = Infra.ParamExtractor.RelateSeriesAndAnswers(Series,
-                                                                   OpcoesCorretas,
-                                                                   Respostas.ToArray());
-            respostasPorSerie = new Dictionary<string, int>(temp);
-
-            // Construindo respostas esperadas
-            var series = Infra.ParamExtractor.GetSeriesList(validadesPuras);
-            var indice = NoRespostasCorretas - notaMinima + 1;
-            var validades = validadesPuras[indice];
-            var valido = true;
-            for (int j = 0; (j < series.Count()) && valido; ++j)
+            // Relacionando os resultados por série
+            foreach (var serie in esperado.Keys.ToArray())
             {
-                var esperado = -10;
-                var coletado = respostasPorSerie[series.ElementAt(j)];
-                int.TryParse(validades[j+1], out esperado);
-                if (esperado < 0) throw new Exception();
-                valido &= (Math.Abs(coletado - esperado) <= 2);
+                int discrepancia = Math.Abs(esperado[serie] - coletado[serie]);
+                saida[serie] = (discrepancia <= 2) ? "VÁLIDO" : "INVÁLIDO";
             }
-            saida = (valido) ? "VÁLIDO" : "INVÁLIDO";
 
             return saida;
         }

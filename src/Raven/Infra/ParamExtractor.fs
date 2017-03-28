@@ -84,3 +84,20 @@ let GetMaximumAge (percentile : string[][]) : int =
                             |> Array.map (fun that -> int(that))
                             |> Array.max )
     |> Array.max
+
+(* Gets what is expected for each series depending on the number of correct answers *)
+let GetExpectedForEachSeries (validities : string[][]) (correct : int) : Map<string, int> =
+    let series = validities.[0]
+                 |> Array.filter (fun it -> it.Length > 0)
+    let possibleLines = validities
+                        |> Array.filter (fun it -> it.[0].Length > 0)
+                        |> Array.filter (fun it -> int(it.[0]) = correct)
+    let outlet = Map.empty
+    let rec loop (outlet : Map<string, int>) (A : string[]) (B : string[]) (i : int) =
+        if i = A.Length 
+            then outlet
+            else loop (outlet.Add(A.[i], int(B.[i]))) A B (i+1)
+            
+    if possibleLines.Length = 0
+        then Map.empty
+        else loop Map.empty series (possibleLines.[0].Skip(1).ToArray()) 0

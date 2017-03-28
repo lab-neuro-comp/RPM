@@ -12,8 +12,8 @@ namespace Raven.View
         {
             Mother = mother;
             /* Não se esqueça de que o os labels de baixo estão invisíveis! */
-            app.RegistrarCronometro();
             string resultado = app.CalcularResultado();
+            app.RegistrarCronometro();
             InitializeComponent(); 
             WindowState = FormWindowState.Maximized;
             var stuff = resultado.Split('\t');
