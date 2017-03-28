@@ -12,8 +12,11 @@ namespace Raven.Model
         public static string[] GerarTabela(Aplicador app)
         {
             // Preparando variáveis auxiliares
+            string dadosPuros = CamadaAcessoDados.Tudo(CamadaAcessoDados.GerarPadraoPeloTeste(app.NomeTeste));
             var tempos = app.Tempos.Select((it) => it.ToString()).ToArray();
             var resultado = app.CalcularResultado().Split('\t');
+            var validades = app.ChecarValidade(Preparador.ExtrairTabela(dadosPuros, "validity"),
+                                               Preparador.ExtrairTabela(dadosPuros, "percentile"));
 
             // Construindo colunas com itens repetidos
             var dados = new Dictionary<string, string[]>();
@@ -33,7 +36,7 @@ namespace Raven.Model
                 percentile[i] = app.Percentil.ToString();
                 correct[i] = app.NoRespostasCorretas.ToString();
                 incorrect[i] = (app.Respostas.Count - app.NoRespostasCorretas).ToString();
-                validity[i] = app.Validade;
+                validity[i] = validades[app.Series[i]];
                 initial[i] = app.MomentoInicial;
             }
 

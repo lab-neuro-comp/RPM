@@ -146,7 +146,7 @@ namespace Raven.Controller
         public void RegistrarCronometro()
         {
             // TODO Atualizar o formatador para incluir a validade de cada série
-            string[] linhasTabela = Formatador.GerarTabela(this);
+            string[] linhasTabela = Raven.Model.Formatador.GerarTabela(this);
             CamadaAcessoDados.Salvar(CamadaAcessoDados.GerarResultado(NomeSujeito), linhasTabela);
         }
 

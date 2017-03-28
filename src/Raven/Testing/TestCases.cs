@@ -15,6 +15,7 @@ namespace Testing
         {
             RunWithTest("valid", GenerateAnswersForColorful());
             RunWithTest("invalid", GenerateInvalidAnswers(36));
+            RunWithTest("partially", GenerateNotValidAnswers());
             Console.ReadLine();
         }
 
@@ -54,6 +55,13 @@ namespace Testing
             return new int[] { 4, 5, 1, 2, 6, 3, 6, 2, 3, 4, 6, 5,
                                4, 5, 1, 6, 2, 1, 3, 3, 6, 4, 5, 5,
                                2, 6, 1, 2, 2, 1, 5 ,6 ,6 ,3, 4, 5, 5};
+        }
+
+        static int[] GenerateNotValidAnswers()
+        {
+            return new int[] { 4, 5, 1, 2, 6, 3, 6, 2, 3, 4, 6, 5,
+                               2, 6, 1, 2, 2, 1, 5 ,6 ,6 ,3, 4, 5,
+                               1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 5 };
         }
 
         static int[] GenerateInvalidAnswers(int size)
