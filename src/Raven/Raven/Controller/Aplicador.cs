@@ -164,12 +164,17 @@ namespace Raven.Controller
                                                                                                         .ToArray()));
 
             // TODO Levar idade em consideração
-
-            foreach (var serie in esperado.Keys.ToArray())
+            foreach (var serie in coletado.Keys)
             {
-                int discrepancia = Math.Abs(esperado[serie] - coletado[serie]);
-                Console.WriteLine($"APLICADOR: |{esperado[serie]} - {coletado[serie]}| = {discrepancia}");
-                saida[serie] = (discrepancia <= 2) ? "VÁLIDO" : "INVÁLIDO";
+                if (esperado.ContainsKey(serie))
+                {
+                    int discrepancia = Math.Abs(esperado[serie] - coletado[serie]);
+                    saida[serie] = (discrepancia <= 2) ? "VÁLIDO" : "INVÁLIDO";
+                }
+                else
+                {
+                    saida[serie] = "INVÁLIDO";
+                }
             }
 
             return saida;
