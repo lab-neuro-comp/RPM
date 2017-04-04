@@ -1,5 +1,4 @@
-﻿#load "Preparer.fs"
-#load "Calculator.fs"
+﻿#load "Calculator.fs"
 #load "ParamExtractor.fs"
 
 let main =

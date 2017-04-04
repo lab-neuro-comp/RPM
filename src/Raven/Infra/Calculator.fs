@@ -9,9 +9,9 @@ let getColumn (intervals : string[]) (age : int) =
     let rec getColumnLoop index =
         if index = intervals.Length
             then -1
-            else let raw = intervals.ElementAt(index).Split(' ')
-                 let lower = int(raw.ElementAt 0)
-                 let upper = int(raw.ElementAt 1)
+            else let raw = intervals.[index] |> (fun it -> it.Split(' '))
+                 let lower = raw.[0] |> int
+                 let upper = raw.[1] |> int
                  if age >= lower && age <= upper
                     then index
                     else getColumnLoop (index+1)
@@ -46,10 +46,11 @@ let RelateSeriesAndAnswers (series : string[]) (answers : bool[]) : Map<string, 
             else 0
     let rec loop map i =
         if i < limit
-            then if Map.containsKey series.[i] map
-                    then loop (Map.add series.[i] (map.[series.[i]] + (isCorrect i)) map)
-                              (i+1)
-                    else loop (Map.add series.[i] (isCorrect i) map) 
-                              (i+1)
+            then let correct = isCorrect i
+                 if Map.containsKey series.[i] map
+                     then loop (Map.add series.[i] (map.[series.[i]] + correct) map)
+                               (i+1)
+                     else loop (Map.add series.[i] correct map) 
+                               (i+1)
             else map
     loop Map.empty 0
