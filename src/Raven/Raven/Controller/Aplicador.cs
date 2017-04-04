@@ -23,7 +23,7 @@ namespace Raven.Controller
         public string[] Series { get; private set; }
         public string Validade { get; private set; }
         public int TamanhoDoTeste { get; private set; }
-        public int Percentil { get; private set; }
+        public int Percentil { get; private set; } = 1;
         public Stopwatch Cronometro { get; private set; }
 
         public Aplicador(string nomeSujeito, string nomeTeste, int idade)
@@ -43,9 +43,8 @@ namespace Raven.Controller
         }
 
         /// <summary>
-        /// 
+        /// Calcula o tamanho do teste baseado no número de imagens
         /// </summary>
-        /// <returns></returns>
         public int ObterTamanhoDoTeste()
         {
             this.TamanhoDoTeste = this.Imagens.Length;
@@ -127,17 +126,13 @@ namespace Raven.Controller
             string[][] percentis = Preparador.ExtrairTabela(dadosPuros, "percentile");
             string[][] validades = Preparador.ExtrairTabela(dadosPuros, "validity");
             var relacaoValidades = ChecarValidade(validades, percentis);
-             
+
+            Percentil = Infra.Calculator.CalculateResult(percentis, NoRespostasCorretas, Idade);
             Validade = (relacaoValidades.ContainsValue("INVÁLIDO") || relacaoValidades.Count == 0)?
                 "INVÁLIDO" :
                 "VÁLIDO";
-
-            if (Validade == "VÁLIDO")
-            {
-                Percentil = Infra.Calculator.CalculateResult(percentis, NoRespostasCorretas, Idade);
-            }
             
-            return $"{Percentil}\t{NoRespostasCorretas}\t{Validade}";
+            return $"{Percentil}\t{NoRespostasCorretas}\t{Validade}"; 
         }
 
         /// <summary>
@@ -148,6 +143,15 @@ namespace Raven.Controller
             // TODO Atualizar o formatador para incluir a validade de cada série
             string[] linhasTabela = Raven.Model.Formatador.GerarTabela(this);
             CamadaAcessoDados.Salvar(CamadaAcessoDados.GerarResultado(NomeSujeito), linhasTabela);
+        }
+
+        /// <summary>
+        /// Gera a tabela de saida para ser salva no arquivo desejado.
+        /// </summary>
+        /// <returns>Uma string onde cada linha é um dado relativo a uma etapa da execução do teste</returns>
+        public string ObterCronometro()
+        {
+            return Raven.Model.Formatador.GerarTabela(this).Aggregate("", (box, it) => $"{box}{it}\n");
         }
 
         /// <summary>

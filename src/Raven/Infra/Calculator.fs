@@ -22,34 +22,34 @@ let getPercentile (table : string[][]) (score : int) (column : int) =
     let rec getPercentileLoop row =
         if row >= table.Length - 1
             then 1
-            else let upper = int(table.ElementAt(row).ElementAt(column))
-                 let lower = int(table.ElementAt(row+1).ElementAt(column))
+            else let upper = table.[row].[column] |> int
+                 let lower = table.[row+1].[column] |> int
                  if score <= upper && score > lower
-                    then int(table.ElementAt(row).ElementAt(0))
+                    then table.[row].[0] |> int
                     else getPercentileLoop (row+1)
     getPercentileLoop 1
 
 /// Takes a table and the number of correct answers and turn them into
 /// the percentile the subject belongs to.
 let CalculateResult (table : string[][]) (score : int) (age : int) : int =
-    let column = getColumn (table.ElementAt 0) age
+    let column = getColumn table.[0] age
     if column >= 0
         then getPercentile table score column
         else 1
 
+/// TODO Write doc for this function
 let RelateSeriesAndAnswers (series : string[]) (answers : bool[]) : Map<string, int> =
     let limit = series.Length
     let isCorrect i =
         if answers.[i]
             then 1
             else 0
-    let rec loop (map : Map<string, int>) i =
+    let rec loop map i =
         if i < limit
-            then if map.ContainsKey series.[i]
-                    then loop (map.Add(series.[i], 
-                                      (map.[series.[i]] + (isCorrect i))))
+            then if Map.containsKey series.[i] map
+                    then loop (Map.add series.[i] (map.[series.[i]] + (isCorrect i)) map)
                               (i+1)
-                    else loop (map.Add(series.[i], (isCorrect i)))
+                    else loop (Map.add series.[i] (isCorrect i) map) 
                               (i+1)
             else map
     loop Map.empty 0

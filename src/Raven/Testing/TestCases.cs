@@ -15,7 +15,7 @@ namespace Testing
         {
             RunWithTest("valid", GenerateAnswersForColorful());
             RunWithTest("invalid", GenerateInvalidAnswers(36));
-            RunWithTest("partially", GenerateNotValidAnswers());
+            RunWithTest("partially correct", GenerateNotValidAnswers());
             Console.ReadLine();
         }
 
@@ -28,13 +28,13 @@ namespace Testing
             Console.WriteLine($"Idade: {App.Idade}");
             //Console.WriteLine("Momento inicial: " + App.MomentoInicial);
             //Console.WriteLine("Respostas dadas:");
+            Console.WriteLine($"Tamanho do teste: {App.ObterTamanhoDoTeste()}");
             for (var i = 0; i < App.ObterTamanhoDoTeste(); ++i)
             {
                 App.Apresentar(i);
                 var resposta = test[i];
                 //Console.WriteLine("- " + resposta);
                 App.OuvirResposta(i, resposta);
-
             }
             Console.WriteLine("# Assessing results");
             Console.WriteLine($"Resultado calculado: {App.CalcularResultado()}");
@@ -42,12 +42,6 @@ namespace Testing
             Console.WriteLine("No Respostas corretas: " + App.NoRespostasCorretas);
             Console.WriteLine();
             App.RegistrarCronometro();
-            //Console.WriteLine("# Turning stuff functional");
-            //var rsr = App.RelacionarSeriesERespostas();
-            //foreach (var key in rsr.Keys)
-            //{
-            //    Console.WriteLine($"{key}: {rsr[key]}");
-            //}
         }
 
         static int[] GenerateAnswersForColorful()
