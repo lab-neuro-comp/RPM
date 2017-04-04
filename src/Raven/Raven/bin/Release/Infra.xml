@@ -2,6 +2,11 @@
 <doc>
 <assembly><name>Infra</name></assembly>
 <members>
+<member name="M:Infra.Calculator.RelateSeriesAndAnswers(System.String[],System.Boolean[])">
+<summary>
+ TODO Write doc for this function
+</summary>
+</member>
 <member name="M:Infra.Calculator.CalculateResult(System.String[][],System.Int32,System.Int32)">
 <summary>
  Takes a table and the number of correct answers and turn them into
