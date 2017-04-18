@@ -125,12 +125,23 @@ namespace Raven.Controller
             string[][] validades = ExtrairTabela("validity");
             var relacaoValidades = ChecarValidade(validades, percentis);
 
-            Percentil = Infra.Calculator.CalculateResult(percentis, NoRespostasCorretas, Idade);
+            Percentil = CalcularPercentil(percentis);
             Validade = (relacaoValidades.ContainsValue("INVÁLIDO") || relacaoValidades.Count == 0)?
                 "INVÁLIDO" :
                 "VÁLIDO";
             
             return $"{Percentil}\t{NoRespostasCorretas}\t{Validade}"; 
+        }
+
+        /// <summary>
+        /// Calcula os percentil relacionado à execução do teste atual. O teste já deve ter sido terminado para
+        /// este método devolver um resultado válido.
+        /// </summary>
+        /// <param name="percentis">A tabela de percentis como dada pelas especificações</param>
+        /// <returns>O percentil baseado na execução atual do teste.</returns>
+        public int CalcularPercentil(string[][] percentis)
+        {
+            return Infra.Calculator.CalculateResult(percentis, NoRespostasCorretas, Idade);
         }
 
         /// <summary>
