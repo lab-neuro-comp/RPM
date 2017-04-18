@@ -10,12 +10,18 @@ namespace Testing
     class TestCases
     {
         static Aplicador App;
+        static Avaliador Eval;
 
         static void Main(string[] args)
         {
             RunWithTest("valid", GenerateAnswersForColorful());
             RunWithTest("invalid", GenerateInvalidAnswers(36));
             RunWithTest("partially correct", GenerateNotValidAnswers());
+            //Console.ReadLine();
+            Console.Clear();
+            RunWithEvaluator("valid", GenerateAnswersForColorful());
+            RunWithEvaluator("invalid", GenerateInvalidAnswers(36));
+            RunWithEvaluator("partially correct", GenerateNotValidAnswers());
             Console.ReadLine();
         }
 
@@ -43,6 +49,26 @@ namespace Testing
             Console.WriteLine();
             App.RegistrarCronometro();
         }
+
+        static void RunWithEvaluator(string tag, int[] test)
+        {
+            Console.WriteLine($"--- # Testing {tag} test");
+            App = new Aplicador($"lil {tag} one", "cor", 10);
+            App.PrepararTeste();
+            Console.WriteLine($"Nome: {App.NomeSujeito}");
+            for (var i = 0; i < App.ObterTamanhoDoTeste(); ++i)
+            {
+                App.Apresentar(i);
+                var resposta = test[i];
+                App.OuvirResposta(i, resposta);
+            }
+            Console.WriteLine("# Assessing results");
+            Eval = new Avaliador(App);
+            Console.WriteLine($"Percentil: {Eval.Percentil}");
+            Console.WriteLine();
+            App.RegistrarCronometro();
+        }
+
 
         static int[] GenerateAnswersForColorful()
         {

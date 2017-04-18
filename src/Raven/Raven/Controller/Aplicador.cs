@@ -121,10 +121,8 @@ namespace Raven.Controller
         /// número de respostas corretas e validade do teste, respectivamente.</returns>
         public string CalcularResultado()
         {
-            string arquivoPadrao = CamadaAcessoDados.GerarPadraoPeloTeste(NomeTeste);
-            string dadosPuros = CamadaAcessoDados.Tudo(arquivoPadrao);
-            string[][] percentis = Preparador.ExtrairTabela(dadosPuros, "percentile");
-            string[][] validades = Preparador.ExtrairTabela(dadosPuros, "validity");
+            string[][] percentis = ExtrairTabela("percentile");
+            string[][] validades = ExtrairTabela("validity");
             var relacaoValidades = ChecarValidade(validades, percentis);
 
             Percentil = Infra.Calculator.CalculateResult(percentis, NoRespostasCorretas, Idade);
@@ -133,6 +131,14 @@ namespace Raven.Controller
                 "VÁLIDO";
             
             return $"{Percentil}\t{NoRespostasCorretas}\t{Validade}"; 
+        }
+
+        /// <summary>
+        /// Extrai a dada tabela do arquivo de dados padrão
+        /// </summary>
+        public string[][] ExtrairTabela(string qual)
+        {
+            return Preparador.ExtrairTabela(CamadaAcessoDados.Tudo(CamadaAcessoDados.GerarPadraoPeloTeste(NomeTeste)), qual);
         }
 
         /// <summary>
