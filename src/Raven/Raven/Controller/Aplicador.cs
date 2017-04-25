@@ -8,6 +8,11 @@ using System.Diagnostics;
 
 namespace Raven.Controller
 {
+    /// <summary>
+    /// Esta classe representa o controlador central nesta aplicação, fazendo a ponte entre 
+    /// as classes que podem acessar a memória; as que foram desenhadas para operar a UI; e
+    /// as que realizam os cálculos para obter os resultados.
+    /// </summary>
     public class Aplicador
     {
         public string NomeSujeito { get; private set; }
@@ -124,8 +129,11 @@ namespace Raven.Controller
             string[][] percentis = ExtrairTabela("percentile");
             string[][] validades = ExtrairTabela("validity");
             var relacaoValidades = ChecarValidade(validades, percentis);
+            var avaliador = new Avaliador(this);
 
-            Percentil = CalcularPercentil(percentis);
+            // TODO Definir entradas e saídas do aplicador
+            // TODO Consertar a próxima linha
+            Percentil = avaliador.Percentil;
             Validade = (relacaoValidades.ContainsValue("INVÁLIDO") || relacaoValidades.Count == 0)?
                 "INVÁLIDO" :
                 "VÁLIDO";

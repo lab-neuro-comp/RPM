@@ -27,8 +27,14 @@ namespace Raven.Controller
         /* ###########
          * # MÉTODOS # 
          * ########### */
+        /// <summary>
+        /// Calcula o percentil obtido pelo sujeito baseado na sua performance no teste e nas tabelas
+        /// fornecidas para o seu cálculo pelo aplicador.
+        /// </summary>
+        /// <returns>O percentil calculado</returns>
         public int CalcularPercentil()
         {
+            // TODO Implementar este método em F#
             int percentil = 1;
             string[][] tabela = App.ExtrairTabela("percentile");
             int noAcertos = App.NoRespostasCorretas;
@@ -58,7 +64,7 @@ namespace Raven.Controller
             else for (int i = 1; i < limite; i++)
             {
                 int chao = pontuacao[i][faixa];
-                Console.WriteLine($"{percentis[i]}. {chao} < {noAcertos} < {teto}");
+                //Console.WriteLine($"{percentis[i]}. {chao} < {noAcertos} < {teto}");
                 if ((chao <= noAcertos) && (teto >= noAcertos))
                 {
                     percentil = percentis[i];
@@ -75,5 +81,7 @@ namespace Raven.Controller
             for (int i = 0; i < s.Count(); i++) if (s[i]) return i;
             return -1;
         }
+
+        // TODO Implementar um método para checar a validade do teste
     }
 }
