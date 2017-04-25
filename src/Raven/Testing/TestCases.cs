@@ -53,7 +53,7 @@ namespace Testing
         static void RunWithEvaluator(string tag, int[] test)
         {
             Console.WriteLine($"--- # Testing {tag} test");
-            App = new Aplicador($"lil {tag} one", "cor", 10);
+            App = new Aplicador($"lil {tag} one", "cor", 5);
             App.PrepararTeste();
             Console.WriteLine($"Nome: {App.NomeSujeito}");
             for (var i = 0; i < App.ObterTamanhoDoTeste(); ++i)
