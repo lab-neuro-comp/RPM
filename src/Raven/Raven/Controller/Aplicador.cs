@@ -31,6 +31,12 @@ namespace Raven.Controller
         public int Percentil { get; private set; } = 1;
         public Stopwatch Cronometro { get; private set; }
 
+        /// <summary>
+        /// Cria uma nova aplicação de teste.
+        /// </summary>
+        /// <param name="nomeSujeito">Nome do sujeito</param>
+        /// <param name="nomeTeste">Código de identificação do teste</param>
+        /// <param name="idade">Idade do sujeito</param>
         public Aplicador(string nomeSujeito, string nomeTeste, int idade)
         {
             this.NomeSujeito = nomeSujeito;
@@ -142,7 +148,7 @@ namespace Raven.Controller
 
         /// <summary>
         /// Calcula os percentil relacionado à execução do teste atual. O teste já deve ter sido terminado para
-        /// este método devolver um resultado válido.
+        /// este método devolver um resultado válido. Este método está deprecado! Prefira a classe "Avaliador"
         /// </summary>
         /// <param name="percentis">A tabela de percentis como dada pelas especificações</param>
         /// <returns>O percentil baseado na execução atual do teste.</returns>
