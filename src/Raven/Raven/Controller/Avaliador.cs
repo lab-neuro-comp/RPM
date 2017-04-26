@@ -20,7 +20,6 @@ namespace Raven.Controller
         public Avaliador(Aplicador app)
         {
             this.App = app;
-            App.CalcularResultado();
             Percentil = CalcularPercentil();
         }
 

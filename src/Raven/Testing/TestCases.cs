@@ -18,7 +18,7 @@ namespace Testing
             RunWithTest("invalid", GenerateInvalidAnswers(36));
             RunWithTest("partially correct", GenerateNotValidAnswers());
             //Console.ReadLine();
-            Console.Clear();
+            //Console.Clear();
             RunWithEvaluator("valid", GenerateAnswersForColorful());
             RunWithEvaluator("invalid", GenerateInvalidAnswers(36));
             RunWithEvaluator("partially correct", GenerateNotValidAnswers());

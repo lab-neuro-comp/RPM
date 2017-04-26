@@ -132,7 +132,6 @@ namespace Raven.Controller
             var avaliador = new Avaliador(this);
 
             // TODO Definir entradas e saídas do aplicador
-            // TODO Consertar a próxima linha
             Percentil = avaliador.Percentil;
             Validade = (relacaoValidades.ContainsValue("INVÁLIDO") || relacaoValidades.Count == 0)?
                 "INVÁLIDO" :
