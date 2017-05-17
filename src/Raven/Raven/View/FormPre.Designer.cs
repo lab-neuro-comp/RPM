@@ -91,6 +91,16 @@
 
         #endregion
 
+        #region My code
+        protected void UpdateInstructions(string instructions)
+        {
+            if (instructions != null)
+            {
+                label1.Text = instructions;
+            }
+        }
+        #endregion
+
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;

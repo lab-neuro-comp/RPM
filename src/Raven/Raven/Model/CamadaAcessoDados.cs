@@ -41,6 +41,16 @@ namespace Raven.Model
             return CaminhoAtual + CaminhoDados + teste + ".xml";
         }
 
+        public static string GerarArquivoDeInstrucoes()
+        {
+            return CaminhoAtual + CaminhoDados + "instructions.txt";
+        }
+
+        public static bool ChecarExistenciaDoArquivo(string arquivo)
+        {
+            return File.Exists(arquivo);
+        }
+
         public static string GerarResultado(string sujeito)
         {
             return CaminhoResultados + sujeito + ".csv";

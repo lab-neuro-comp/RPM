@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Raven.Controller;
+using Raven.Model;
 
 namespace Testing
 {
@@ -23,6 +24,7 @@ namespace Testing
             RunWithEvaluator("invalid", GenerateInvalidAnswers(36));
             RunWithEvaluator("partially correct", GenerateNotValidAnswers());
             Console.ReadLine();
+            Console.Clear();
         }
 
         static void RunWithTest(string tag, int[] test)
@@ -68,7 +70,6 @@ namespace Testing
             Console.WriteLine();
             App.RegistrarCronometro();
         }
-
 
         static int[] GenerateAnswersForColorful()
         {

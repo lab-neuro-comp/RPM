@@ -21,6 +21,7 @@ namespace Raven.View
             WindowState = FormWindowState.Maximized;
             App = app;
             Mother = mother;
+            UpdateInstructions(Preparador.ObterInstrucoes());
         }
 
         private void button1_Click(object sender, EventArgs e)

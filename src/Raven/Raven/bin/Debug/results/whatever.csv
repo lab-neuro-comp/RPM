@@ -1,0 +1,6 @@
+Nome;Idade;Momento Inicial;Percentil;# Respostas Corretas;# Respostas Incorretas;Resposta esperada;Resposta dada;Tempos;Validez
+whatever;10;17/05/2017 09:48:36;1;1;4;4;6;3871;INVÁLIDO
+whatever;10;17/05/2017 09:48:36;1;1;4;5;6;301;INVÁLIDO
+whatever;10;17/05/2017 09:48:36;1;1;4;1;6;332;INVÁLIDO
+whatever;10;17/05/2017 09:48:36;1;1;4;2;6;314;INVÁLIDO
+whatever;10;17/05/2017 09:48:36;1;1;4;6;6;313;INVÁLIDO

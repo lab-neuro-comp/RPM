@@ -16,7 +16,7 @@ namespace Raven.Controller
 
         public Preparador()
         {
-            
+
         }
 
         public void CarregarTestes()
@@ -43,7 +43,7 @@ namespace Raven.Controller
             var spec = $"/test/{tag}/text()";
             var linhas = new LinkedList<string[]>();
             XmlNodeList nos;
-            
+
             xml.LoadXml(dadoPuro);
             nos = xml.SelectNodes(spec);
 
@@ -58,10 +58,24 @@ namespace Raven.Controller
                         linhas.AddLast(linha.Split(';'));
                     }
                 }
-                
+
             }
 
             return linhas.ToArray();
+        }
+
+        public static string ObterInstrucoes()
+        {
+            string instrucoes = null;
+            string arquivoInstrucoes = CamadaAcessoDados.GerarArquivoDeInstrucoes();
+
+            if (CamadaAcessoDados.ChecarExistenciaDoArquivo(arquivoInstrucoes))
+            {
+                instrucoes = CamadaAcessoDados.Tudo(arquivoInstrucoes);
+            }
+
+            Console.WriteLine(CamadaAcessoDados.ChecarExistenciaDoArquivo(arquivoInstrucoes));
+            return instrucoes;
         }
     }
 }
