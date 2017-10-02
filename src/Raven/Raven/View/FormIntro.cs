@@ -29,13 +29,28 @@ namespace Raven.View
             try
             {
                 nome = textNome.Text;
-                idade = int.Parse(textIdade.Text);
                 teste = Cook.Caminhos[comboOps.SelectedIndex];
-                
-                if ((nome.Length < 1) || (idade > 12))
-                    throw new Exception();
+                idade = int.Parse(textIdade.Text);
+                int minimum = Infra.ParamExtractor.GetMinimumAge(Aplicador.ExtrairTabela(teste, "percentile"));
+                int maximum = Infra.ParamExtractor.GetMaximumAge(Aplicador.ExtrairTabela(teste, "percentile"));
+
+                if ((idade < minimum) || (idade > maximum))
+                    throw new IdadeInvalidaException();
+
+                if (nome.Length < 1)
+                    throw new CamposNaoPreenchidosException();
             }
-            catch (Exception any)
+            catch (FormatException fe)
+            {
+                MessageBox.Show("Digite uma idade válida!", "Warning");
+                return;
+            }
+            catch (IdadeInvalidaException iie)
+            {
+                MessageBox.Show("Incorrect age!", "Warning");
+                return;
+            }
+            catch (CamposNaoPreenchidosException cnpe)
             {
                 MessageBox.Show("Preencha todos os campos", "Aviso!");
                 return;

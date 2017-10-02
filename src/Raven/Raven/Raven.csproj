@@ -53,6 +53,7 @@
     <Compile Include="Controller\Avaliador.cs" />
     <Compile Include="Model\Formatador.cs" />
     <Compile Include="Model\CamadaAcessoDados.cs" />
+    <Compile Include="View\CamposNaoPreenchidosException.cs" />
     <Compile Include="View\FormOutro.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +87,7 @@
     <Compile Include="View\FormResultado.Designer.cs">
       <DependentUpon>FormResultado.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\IdadeInvalidaException.cs" />
     <EmbeddedResource Include="View\FormIntro.resx">
       <DependentUpon>FormIntro.cs</DependentUpon>
     </EmbeddedResource>

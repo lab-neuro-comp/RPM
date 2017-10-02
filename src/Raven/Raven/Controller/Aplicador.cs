@@ -162,7 +162,18 @@ namespace Raven.Controller
         /// </summary>
         public string[][] ExtrairTabela(string qual)
         {
-            return Preparador.ExtrairTabela(CamadaAcessoDados.Tudo(CamadaAcessoDados.GerarPadraoPeloTeste(NomeTeste)), qual);
+            return ExtrairTabela(NomeTeste, qual);
+        }
+
+        /// <summary>
+        /// Extrai a dada tabela do arquivo de dados padrão de um teste.
+        /// </summary>
+        /// <param name="teste">código do teste a ser utilizado de parâmetro.</param>
+        /// <param name="qual">código da tabela que deverá ser extraída.</param>
+        /// <returns>a tabela desejada</returns>
+        public static string[][] ExtrairTabela(string teste, string qual)
+        {
+            return Preparador.ExtrairTabela(CamadaAcessoDados.Tudo(CamadaAcessoDados.GerarPadraoPeloTeste(teste)), qual);
         }
 
         /// <summary>
