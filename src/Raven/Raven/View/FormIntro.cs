@@ -32,7 +32,7 @@ namespace Raven.View
                 idade = int.Parse(textIdade.Text);
                 teste = Cook.Caminhos[comboOps.SelectedIndex];
                 
-                if (nome.Length < 1)
+                if ((nome.Length < 1) || (idade > 12))
                     throw new Exception();
             }
             catch (Exception any)
