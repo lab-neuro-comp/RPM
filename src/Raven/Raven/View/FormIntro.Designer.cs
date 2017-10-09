@@ -86,6 +86,7 @@
             this.comboOps.Name = "comboOps";
             this.comboOps.Size = new System.Drawing.Size(141, 28);
             this.comboOps.TabIndex = 2;
+            this.comboOps.SelectedIndexChanged += new System.EventHandler(this.comboOps_SelectedIndexChanged);
             // 
             // label3
             // 

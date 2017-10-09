@@ -25,12 +25,16 @@ namespace Raven.View
             string nome;
             string teste;
             int idade;
-
+            
             try
             {
                 nome = textNome.Text;
-                teste = Cook.Caminhos[comboOps.SelectedIndex];
                 idade = int.Parse(textIdade.Text);
+                
+                if (comboOps.SelectedIndex < 0)
+                    throw new TesteNaoSelecionadoException();
+
+                teste = Cook.Caminhos[comboOps.SelectedIndex];
                 int minimum = Infra.ParamExtractor.GetMinimumAge(Aplicador.ExtrairTabela(teste, "percentile"));
                 int maximum = Infra.ParamExtractor.GetMaximumAge(Aplicador.ExtrairTabela(teste, "percentile"));
 
@@ -42,23 +46,33 @@ namespace Raven.View
             }
             catch (FormatException fe)
             {
-                MessageBox.Show("Digite uma idade válida!", "Warning");
+                MessageBox.Show("Digite uma idade válida.", "Aviso!");
                 return;
             }
             catch (IdadeInvalidaException iie)
             {
-                MessageBox.Show("Incorrect age!", "Warning");
+                MessageBox.Show("Idade fora dos padrões do teste.", "Aviso!");
                 return;
             }
             catch (CamposNaoPreenchidosException cnpe)
             {
-                MessageBox.Show("Preencha todos os campos", "Aviso!");
+                MessageBox.Show("Digite um nome para o participante.", "Aviso!");
+                return;
+            }
+            catch (TesteNaoSelecionadoException tnse)
+            {
+                MessageBox.Show("Escolha um teste.", "Aviso!");
                 return;
             }
 
             FormPre form = new FormPre(this, new Aplicador(nome, teste, idade));
             form.Show();
             this.Hide();
+        }
+
+        private void comboOps_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
