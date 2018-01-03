@@ -11,3 +11,16 @@ C:\Users\neuro\Documents\Lab\src\github.com\lab-neuro-comp\RPM\src\Raven\Testing
 C:\Users\neuro\Documents\Lab\src\github.com\lab-neuro-comp\RPM\src\Raven\Testing\obj\Debug\Testing.csprojResolveAssemblyReference.cache
 C:\Users\neuro\Documents\Lab\src\github.com\lab-neuro-comp\RPM\src\Raven\Testing\obj\Debug\Testing.exe
 C:\Users\neuro\Documents\Lab\src\github.com\lab-neuro-comp\RPM\src\Raven\Testing\obj\Debug\Testing.pdb
+C:\Users\cris\Documents\scripts\RPM\src\Raven\Testing\bin\Debug\Testing.exe.config
+C:\Users\cris\Documents\scripts\RPM\src\Raven\Testing\obj\Debug\Testing.pdb
+C:\Users\cris\Documents\scripts\RPM\src\Raven\Testing\bin\Debug\Testing.exe
+C:\Users\cris\Documents\scripts\RPM\src\Raven\Testing\bin\Debug\Testing.pdb
+C:\Users\cris\Documents\scripts\RPM\src\Raven\Testing\bin\Debug\Infra.dll
+C:\Users\cris\Documents\scripts\RPM\src\Raven\Testing\bin\Debug\Raven.exe
+C:\Users\cris\Documents\scripts\RPM\src\Raven\Testing\bin\Debug\FSharp.Core.dll
+C:\Users\cris\Documents\scripts\RPM\src\Raven\Testing\bin\Debug\Infra.pdb
+C:\Users\cris\Documents\scripts\RPM\src\Raven\Testing\bin\Debug\Infra.xml
+C:\Users\cris\Documents\scripts\RPM\src\Raven\Testing\bin\Debug\Raven.pdb
+C:\Users\cris\Documents\scripts\RPM\src\Raven\Testing\bin\Debug\FSharp.Core.xml
+C:\Users\cris\Documents\scripts\RPM\src\Raven\Testing\obj\Debug\Testing.csprojResolveAssemblyReference.cache
+C:\Users\cris\Documents\scripts\RPM\src\Raven\Testing\obj\Debug\Testing.exe
