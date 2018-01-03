@@ -21,9 +21,6 @@ C:\Users\cris\Documents\scripts\RPM\src\Raven\Raven\obj\Debug\Raven.pdb
 C:\Users\cris\Documents\scripts\RPM\src\Raven\Raven\bin\Debug\Raven.exe
 C:\Users\cris\Documents\scripts\RPM\src\Raven\Raven\bin\Debug\Raven.pdb
 C:\Users\cris\Documents\scripts\RPM\src\Raven\Raven\bin\Debug\FSharp.Core.dll
-C:\Users\cris\Documents\scripts\RPM\src\Raven\Raven\bin\Debug\Infra.dll
-C:\Users\cris\Documents\scripts\RPM\src\Raven\Raven\bin\Debug\Infra.pdb
-C:\Users\cris\Documents\scripts\RPM\src\Raven\Raven\bin\Debug\Infra.xml
 C:\Users\cris\Documents\scripts\RPM\src\Raven\Raven\bin\Debug\FSharp.Core.xml
 C:\Users\cris\Documents\scripts\RPM\src\Raven\Raven\obj\Debug\Raven.csprojResolveAssemblyReference.cache
 C:\Users\cris\Documents\scripts\RPM\src\Raven\Raven\obj\Debug\Raven.View.FormIntro.resources

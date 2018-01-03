@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Controller\Aplicador.cs" />
     <Compile Include="Controller\Avaliador.cs" />
+    <Compile Include="Model\Calculator\Calculator.cs" />
     <Compile Include="Model\Formatador.cs" />
     <Compile Include="Model\CamadaAcessoDados.cs" />
     <Compile Include="View\CamposNaoPreenchidosException.cs" />
