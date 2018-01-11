@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Controller\Aplicador.cs" />
     <Compile Include="Controller\Avaliador.cs" />
+    <Compile Include="Model\Calculator\Calculator.cs" />
     <Compile Include="Model\Formatador.cs" />
     <Compile Include="Model\CamadaAcessoDados.cs" />
     <Compile Include="View\CamposNaoPreenchidosException.cs" />
@@ -130,12 +131,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Infra\Infra.fsproj">
-      <Project>{1cac092e-3d43-4c8f-8e18-3c66a9f5a70f}</Project>
-      <Name>Infra</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

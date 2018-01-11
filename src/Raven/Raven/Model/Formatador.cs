@@ -54,7 +54,34 @@ namespace Raven.Model
 
             // Salvando dados na memória
             string titulo = "Nome;Idade;Momento Inicial;Percentil;# Respostas Corretas;# Respostas Incorretas;Resposta esperada;Resposta dada;Tempos;Validez";
-            return Infra.Formatter.Format(titulo, dados);
+            return Formatar(titulo, dados);
+        }
+
+        public static string[] Formatar(string titulo, Dictionary<string, string[]> dados)
+        {
+            var entrada = new string[][] {
+                dados["name"],
+                dados["age"],
+                dados["initial"],
+                dados["percentile"],
+                dados["correct"],
+                dados["incorrect"],
+                dados["expected"],
+                dados["answers"],
+                dados["times"],
+                dados["validity"]
+            };
+            var saida = new List<string>();
+            var limite = entrada.Select(it => it.Length).Min();
+
+            saida.Add(titulo);
+            for (int i = 0; i < limite; i++)
+            {
+                saida.Add(entrada.Select(it => it.ElementAt(i)).Aggregate((box, it) => $"{box};{it}"));
+            }
+
+            return saida.ToArray();
         }
     }
 }
+ 

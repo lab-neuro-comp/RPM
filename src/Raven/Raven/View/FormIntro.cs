@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using Raven.Controller;
+using Raven.Model.Calculator;
 
 namespace Raven.View
 {
@@ -35,8 +36,8 @@ namespace Raven.View
                     throw new TesteNaoSelecionadoException();
 
                 teste = Cook.Caminhos[comboOps.SelectedIndex];
-                int minimum = Infra.ParamExtractor.GetMinimumAge(Aplicador.ExtrairTabela(teste, "percentile"));
-                int maximum = Infra.ParamExtractor.GetMaximumAge(Aplicador.ExtrairTabela(teste, "percentile"));
+                int minimum = Calculator.GetMinimumAge(Aplicador.ExtrairTabela(teste, "percentile")); // IDEA Mover essas funções para um local apropriado
+                int maximum = Calculator.GetMaximumAge(Aplicador.ExtrairTabela(teste, "percentile"));
 
                 if ((idade < minimum) || (idade > maximum))
                     throw new IdadeInvalidaException();

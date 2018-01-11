@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Raven.Model;
 using System.Linq;
-using Infra;
+using Raven.Model.Calculator;
 using System.Globalization;
 using System.Diagnostics;
 
@@ -75,10 +75,10 @@ namespace Raven.Controller
             // Preparando parâmetros do teste
             string parametros = CamadaAcessoDados.GerarParametrosPeloTeste(NomeTeste);
             string[] dadosPuros = CamadaAcessoDados.CadaLinha(parametros);
-            Imagens = Infra.ParamExtractor.GetImages(dadosPuros);
-            NoOpcoes = Infra.ParamExtractor.GetNoOptions(dadosPuros);
-            OpcoesCorretas = Infra.ParamExtractor.GetCorrectOptions(dadosPuros);
-            Series = Infra.ParamExtractor.GetSeries(dadosPuros);
+            Imagens = Calculator.GetImages(dadosPuros);
+            NoOpcoes = Calculator.GetNoOptions(dadosPuros);
+            OpcoesCorretas = Calculator.GetCorrectOptions(dadosPuros);
+            Series = Calculator.GetSeries(dadosPuros);
 
             // Checando se os dados carregados estão corretos
             //Console.WriteLine(Series.Aggregate("", (box, it) => $"{box}\n{it}"));
@@ -154,7 +154,7 @@ namespace Raven.Controller
         /// <returns>O percentil baseado na execução atual do teste.</returns>
         public int CalcularPercentil(string[][] percentis)
         {
-            return Infra.Calculator.CalculateResult(percentis, NoRespostasCorretas, Idade);
+            return Calculator.CalculateResult(percentis, NoRespostasCorretas, Idade);
         }
 
         /// <summary>
@@ -203,10 +203,10 @@ namespace Raven.Controller
         public Dictionary<string, string> ChecarValidade(string[][] validadesPuras, string[][] percentisPuros)
         {
             Dictionary<string, string> saida = new Dictionary<string, string>();
-            var esperado = new Dictionary<string, int>(Infra.ParamExtractor.GetExpectedForEachSeries(validadesPuras, NoRespostasCorretas));
-            var coletado = new Dictionary<string, int>(Infra.Calculator.RelateSeriesAndAnswers(Series,
-                                                                                               Respostas.Zip(OpcoesCorretas, (given, expected) => given == expected)
-                                                                                                        .ToArray()));
+            var esperado = new Dictionary<string, int>(Calculator.GetExpectedForEachSeries(validadesPuras, NoRespostasCorretas));
+            var coletado = new Dictionary<string, int>(Calculator.RelateSeriesAndAnswers(Series,
+                                                                                         Respostas.Zip(OpcoesCorretas, (given, expected) => given == expected)
+                                                                                                  .ToArray()));
 
             // TODO Levar idade em consideração
             foreach (var serie in coletado.Keys)
