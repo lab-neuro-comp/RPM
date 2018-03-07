@@ -52,3 +52,17 @@ C:\Users\neuro\Documents\Lab\src\github.com\lab-neuro-comp\RPM\src\Raven\Raven\o
 C:\Users\neuro\Documents\Lab\src\github.com\lab-neuro-comp\RPM\src\Raven\Raven\obj\Release\Raven.View.FormResultado.resources
 C:\Users\neuro\Documents\Lab\src\github.com\lab-neuro-comp\RPM\src\Raven\Raven\obj\Release\Raven.csproj.GenerateResource.Cache
 C:\Users\neuro\Documents\Lab\src\github.com\lab-neuro-comp\RPM\src\Raven\Raven\obj\Release\Raven.exe
+C:\Users\LabNeuro\Documents\GitHub\RPM\src\Raven\Raven\bin\Release\Raven.exe.config
+C:\Users\LabNeuro\Documents\GitHub\RPM\src\Raven\Raven\bin\Release\Raven.exe
+C:\Users\LabNeuro\Documents\GitHub\RPM\src\Raven\Raven\bin\Release\Raven.pdb
+C:\Users\LabNeuro\Documents\GitHub\RPM\src\Raven\Raven\obj\Release\Raven.csprojResolveAssemblyReference.cache
+C:\Users\LabNeuro\Documents\GitHub\RPM\src\Raven\Raven\obj\Release\Raven.View.FormIntro.resources
+C:\Users\LabNeuro\Documents\GitHub\RPM\src\Raven\Raven\obj\Release\Raven.View.FormOps.resources
+C:\Users\LabNeuro\Documents\GitHub\RPM\src\Raven\Raven\obj\Release\Raven.Properties.Resources.resources
+C:\Users\LabNeuro\Documents\GitHub\RPM\src\Raven\Raven\obj\Release\Raven.View.FormOutro.resources
+C:\Users\LabNeuro\Documents\GitHub\RPM\src\Raven\Raven\obj\Release\Raven.View.FormPre.resources
+C:\Users\LabNeuro\Documents\GitHub\RPM\src\Raven\Raven\obj\Release\Raven.View.FormResultado.resources
+C:\Users\LabNeuro\Documents\GitHub\RPM\src\Raven\Raven\obj\Release\Raven.csproj.GenerateResource.Cache
+C:\Users\LabNeuro\Documents\GitHub\RPM\src\Raven\Raven\obj\Release\Raven.csproj.CoreCompileInputs.cache
+C:\Users\LabNeuro\Documents\GitHub\RPM\src\Raven\Raven\obj\Release\Raven.exe
+C:\Users\LabNeuro\Documents\GitHub\RPM\src\Raven\Raven\obj\Release\Raven.pdb

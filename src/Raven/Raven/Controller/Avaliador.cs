@@ -62,7 +62,16 @@ namespace Raven.Controller
                 //Console.WriteLine($"{percentis[i]}. {chao} < {noAcertos} < {teto}");
                 if ((chao <= noAcertos) && (teto >= noAcertos))
                 {
-                    percentil = percentis[i];
+                        if (chao == noAcertos)
+                        {
+                            percentil = percentis[i];
+                            break;
+                        }
+                        else
+                        {
+                            percentil = percentis[i - 1];
+                        }
+                        
                 }
                 teto = chao;
             }

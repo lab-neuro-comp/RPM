@@ -24,3 +24,13 @@ C:\Users\neuro\Documents\Lab\src\github.com\lab-neuro-comp\RPM\src\Raven\Testing
 C:\Users\neuro\Documents\Lab\src\github.com\lab-neuro-comp\RPM\src\Raven\Testing\bin\Release\FSharp.Core.xml
 C:\Users\neuro\Documents\Lab\src\github.com\lab-neuro-comp\RPM\src\Raven\Testing\obj\Release\Testing.csprojResolveAssemblyReference.cache
 C:\Users\neuro\Documents\Lab\src\github.com\lab-neuro-comp\RPM\src\Raven\Testing\obj\Release\Testing.exe
+C:\Users\LabNeuro\Documents\GitHub\RPM\src\Raven\Testing\bin\Release\Testing.exe.config
+C:\Users\LabNeuro\Documents\GitHub\RPM\src\Raven\Testing\bin\Release\Testing.exe
+C:\Users\LabNeuro\Documents\GitHub\RPM\src\Raven\Testing\bin\Release\Testing.pdb
+C:\Users\LabNeuro\Documents\GitHub\RPM\src\Raven\Testing\bin\Release\Raven.exe
+C:\Users\LabNeuro\Documents\GitHub\RPM\src\Raven\Testing\bin\Release\Raven.pdb
+C:\Users\LabNeuro\Documents\GitHub\RPM\src\Raven\Testing\bin\Release\Raven.exe.config
+C:\Users\LabNeuro\Documents\GitHub\RPM\src\Raven\Testing\obj\Release\Testing.csprojResolveAssemblyReference.cache
+C:\Users\LabNeuro\Documents\GitHub\RPM\src\Raven\Testing\obj\Release\Testing.csproj.CoreCompileInputs.cache
+C:\Users\LabNeuro\Documents\GitHub\RPM\src\Raven\Testing\obj\Release\Testing.exe
+C:\Users\LabNeuro\Documents\GitHub\RPM\src\Raven\Testing\obj\Release\Testing.pdb

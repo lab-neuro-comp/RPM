@@ -19,3 +19,13 @@ C:\Users\cris\Documents\scripts\RPM\src\Raven\Testing\bin\Debug\Raven.exe
 C:\Users\cris\Documents\scripts\RPM\src\Raven\Testing\bin\Debug\Raven.pdb
 C:\Users\cris\Documents\scripts\RPM\src\Raven\Testing\obj\Debug\Testing.csprojResolveAssemblyReference.cache
 C:\Users\cris\Documents\scripts\RPM\src\Raven\Testing\obj\Debug\Testing.exe
+C:\Users\LabNeuro\Documents\GitHub\RPM\src\Raven\Testing\bin\Debug\Testing.exe.config
+C:\Users\LabNeuro\Documents\GitHub\RPM\src\Raven\Testing\bin\Debug\Testing.exe
+C:\Users\LabNeuro\Documents\GitHub\RPM\src\Raven\Testing\bin\Debug\Testing.pdb
+C:\Users\LabNeuro\Documents\GitHub\RPM\src\Raven\Testing\bin\Debug\Raven.exe
+C:\Users\LabNeuro\Documents\GitHub\RPM\src\Raven\Testing\bin\Debug\Raven.pdb
+C:\Users\LabNeuro\Documents\GitHub\RPM\src\Raven\Testing\bin\Debug\Raven.exe.config
+C:\Users\LabNeuro\Documents\GitHub\RPM\src\Raven\Testing\obj\Debug\Testing.csprojResolveAssemblyReference.cache
+C:\Users\LabNeuro\Documents\GitHub\RPM\src\Raven\Testing\obj\Debug\Testing.csproj.CoreCompileInputs.cache
+C:\Users\LabNeuro\Documents\GitHub\RPM\src\Raven\Testing\obj\Debug\Testing.exe
+C:\Users\LabNeuro\Documents\GitHub\RPM\src\Raven\Testing\obj\Debug\Testing.pdb
